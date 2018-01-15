@@ -1,0 +1,3 @@
+Write a BMCArrayList class, with iterator functionality.
+ListIterator too? Maybe. Try it.
+Re-implement hw3 in with the new list. This part should be easy.

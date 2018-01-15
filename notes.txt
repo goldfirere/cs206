@@ -1,0 +1,12 @@
+DK: swap assignment/lab for queues assignment
+
+--- RAE NOTES
+
+Focus more on correctness:
+ - no repetitive code (or a descriptive comment)
+ - smaller scopes are better
+ - comments on every method, incl. preconditions and postconditions and arg descriptions
+ - no magic constants
+ - crisp coding: spelling is correct, indentation is clean
+ - style as deduction, not part of main points
+ - no no-ops

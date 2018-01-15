@@ -1,0 +1,2 @@
+A few recursive exercises
+binary search reimplementation of earlier assignment

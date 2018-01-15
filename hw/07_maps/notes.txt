@@ -1,0 +1,2 @@
+Reimplement earlier assignment with a map. Very easy now.
+Maybe something else, too.

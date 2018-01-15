@@ -1,0 +1,8 @@
+CHOICE:
+ - empirical analysis of the 4 sorts (2 quadratic, 2 not) (all hand-implemented)
+
+  OR
+
+ - empirical analysis of a BST implementation of a map vs a hashtable implementation of a map
+
+The second one seems a lot harder.... maybe make first one a lab.

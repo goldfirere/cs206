@@ -1,0 +1,76 @@
+body {
+    background-color: #caecfc; 
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000;
+}
+
+#header {
+    text-align: center;
+    font-size: 150%;
+}
+
+
+div#navbar {
+    text-align: center;
+}
+
+span#navbarspan {
+    background-color: hsl(199, 89%, 80%);
+    padding: 3px 10px;
+    border: solid 1px #000000;
+}
+
+#navbar a {
+    margin: 0px 10px;
+}
+
+h1 {
+    font-size: 125%;
+    font-weight: bold;
+    border-top: thin solid #000000;
+}
+
+h2 {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+span.strut {
+    display: block;
+    height: 1em;
+}
+
+div#footer {
+    text-align: center;
+    font-size: 80%;
+}
+
+/* Code highlighting */
+.sourceCode .co { /* comments */
+    color: #B8860B;
+}
+
+.sourceCode .kw, .sourceCode .dt { /* keyword */
+    color: #008800;
+}
+
+div#linkback {
+    text-align: center;
+}
+
+code {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+code.sourceCode {
+    background-color: inherit;
+}
+
+div.sourceCode {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+div#demo {
+    text-align: center;
+}

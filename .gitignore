@@ -1,0 +1,17 @@
+.recommenders
+*.aux
+.settings
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.class
+_site
+_cache
+/.metadata/
+bin
+java.policy.applet
+*.ptb
+*.o
+*.hi
