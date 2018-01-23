@@ -113,7 +113,7 @@ a [pull request](https://github.com/goldfirere/cs206/pulls) against the `cs206` 
 Exams
 -----
 
-This course has two midterms (TODO and TODO), and one self-scheduled
+This course has two midterms (Feb. 22 and Apr. 3), and one self-scheduled
 final exam during the normal exam period.
 Exams will be closed-book and closed-note, but they will include
 a reference (which you will be able to see ahead of time) listing

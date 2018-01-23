@@ -1,0 +1,44 @@
+I. Introductions
+II. Data Structures
+
+
+Introductions (9:55-10:10)
+ - my background
+ - programming languages
+ - programming
+ - and you are... ?
+
+Data Structures (10:10-10:35)
+ - organization of data
+ - object-oriented design
+ - lists
+ - maps
+ - sets
+ - stacks and queues
+ - abstract data types
+ - concrete data types: binary search trees & hash tables
+ - sorting
+
+ - In groups of 3:
+   - what are some operations that we encounter on a daily basis that might need
+     a specialized data structure?
+
+Administrivia (10:35-10:55)
+ - syllabus
+ - class will be hard
+ - programming
+ - analysis
+ - piazza
+ - read the homework
+ - "read" the textbook
+
+ - Eclipse
+ - lab tomorrow
+
+Java programming (10:55-11:15)
+ - variables
+ - types
+ - control flow
+ - assignment
+ - Primes
+ - DivisibleBy5

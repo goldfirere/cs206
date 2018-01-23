@@ -18,12 +18,12 @@ represents my aims.
 +---+-----+----------------------+--------------------+-------------------+-------------------+-------------------+
 |\# |Date |Topic                 |  Assignments       | Reading           | Examples          |  Extras           |
 +---+-----+----------------------+--------------------+-------------------+-------------------+-------------------+
-|1  |1/23 | * Introductions      | * [Sign up on      | * Skim KW A.1-A.3,|                   |                   |
+|1  |1/23 | * Introductions      | * [Sign up on      | * Skim KW A.1-A.3,|\$examples01\$     |                   |
 |   |     | * Administrivia      |Piazza]             |pp. 597-613        |                   |                   |
 |   |     | * Overview of data   | * Fill out [this   | * Read KW A.4, pp.|                   |                   |
 |   |     |structures            |survey]             |613-617            |                   |                   |
-|   |     | * Java programming   | * Assignment 1 out |                   |                   |                   |
-|   |     |                      |                    |                   |                   |                   |
+|   |     | * Java programming   | * [Assignment 1]   |                   |                   |                   |
+|   |     |                      |out                 |                   |                   |                   |
 |   |     |                      |                    |                   |                   |                   |
 +---+-----+----------------------+--------------------+-------------------+-------------------+-------------------+
 |L1 |1/24 | * Installing         |                    |                   |                   |                   |
@@ -62,7 +62,7 @@ represents my aims.
 |   |     |                      |                    |                   |                   |                   |
 |   |     |                      |                    |                   |                   |                   |
 +---+-----+----------------------+--------------------+-------------------+-------------------+-------------------+
-| 4 |2/1  | * Exceptions         | * Assignment 1 due | * Read KW 1.1-1.3,|                   |                   |
+| 4 |2/1  | * Exceptions         |* [Assignment 1] due| * Read KW 1.1-1.3,|                   |                   |
 |   |     | * File I/O           | * Assignment 2 out |pp. 1-21           |                   |                   |
 |   |     | * Unit testing with  |                    | * Read KW 2.11,   |                   |                   |
 |   |     |JUnit                 |                    |pp. 130-138        |                   |                   |
@@ -353,4 +353,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [this survey]: https://docs.google.com/forms/d/e/1FAIpQLSd5t9j-g-oRTGbv6UrEheki1m94nKv6qIQuO-7xGif7krptew/viewform?usp=sf_link
 [Lab01]: lab01/lab.html
 [Reverse Polish notation]: https://en.wikipedia.org/wiki/Reverse_Polish_notation
-
+[Assignment 1]: hw01/Warmup.pdf
