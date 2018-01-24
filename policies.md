@@ -148,6 +148,7 @@ You are allowed to work with up to one partner on all assignments, with one
 caveat: no more than 2 assignments may be completed with the same partner.
 
 If you work with a partner:
+
  * Make sure that both partners' names are on all parts of the assignment.
  * Register as a group within [Gradescope].
  * Submit only one copy of the assignment.

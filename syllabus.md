@@ -26,7 +26,7 @@ represents my aims.
 |   |     |                      |out                 |                   |                   |                   |
 |   |     |                      |                    |                   |                   |                   |
 +---+-----+----------------------+--------------------+-------------------+-------------------+-------------------+
-|L1 |1/24 | * Installing         |                    |                   |                   |                   |
+|L1 |1/24 | * Installing         |                    |                   |                   | [Lab 1]           |
 |   |     |Eclipse               |                    |                   |                   |                   |
 |   |     | * Java warmup        |                    |                   |                   |                   |
 |   |     |problems              |                    |                   |                   |                   |
@@ -351,6 +351,6 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 
 [Sign up on Piazza]: https://piazza.com/brynmawr/spring2018/cs206
 [this survey]: https://docs.google.com/forms/d/e/1FAIpQLSd5t9j-g-oRTGbv6UrEheki1m94nKv6qIQuO-7xGif7krptew/viewform?usp=sf_link
-[Lab01]: lab01/lab.html
+[Lab 1]: lab01/lab.html
 [Reverse Polish notation]: https://en.wikipedia.org/wiki/Reverse_Polish_notation
 [Assignment 1]: hw01/Warmup.pdf
