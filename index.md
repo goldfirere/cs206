@@ -35,28 +35,24 @@ Lab:                           W 2:40-4:00pm, Park 231
 Website:                       <http://cs.brynmawr.edu/cs206>
 GitHub Repo:                   <https://github.com/goldfirere/cs206>
 Piazza Q&A Forum:              <https://piazza.com/brynmawr/spring2018/cs206/home>
-TAs:                           TBD
+TAs:                           Sonya Fucci \<<sfucci@brynmawr.edu>\>, My Nguyen \<<mnguyen1@brynmawr.edu>\>, Tessa Pham \<<ttpham@brynmawr.edu>\>, Ricki Su \<<rsu@brynmawr.edu>\>
 ----------------------         -----------------------------------------------------------------------------------------------------------------------------------------
 
 </div>
-<!--
 <div id="ta_hours">
 
 --------------------           ------------------------------     ----------------------
 Time                           TA                                 Location
-Mondays 6-8pm                  Kennedy Ellison                    Park 231
-Mondays 7-9pm                  Ruby Malusa                        Park 231
-Mondays 8-10pm                 Jocelyn Dunkley                    **Hilles 110** at Haverford
-Tuesdays 6-8pm                 Kellie Dinh                        Park 231
-Tuesdays 7-9pm                 Sonya Fucci                        Park 231
-Wednesdays 6-8pm               Kellie Dinh                        Park 231
-Wednesdays 7-9pm               Jocelyn Dunkley                    Park 231
-Thursdays 6-8pm                Kennedy Ellison                    Park 231
-Sundays 6-8pm                  Ruby Malusa                        Park 231
+Sundays 6-8pm                  Ricki Su                           Park 231
 Sundays 7-9pm                  Sonya Fucci                        Park 231
+Mondays 6-8pm                  Tessa Pham                         Park 231
+Mondays 7-9pm                  My Nguyen                          Park 231
+Tuesdays 7-9pm                 Ricki Su                           Park 231
+Wednesdays 6-8pm               Tessa Pham                         Park 231
+Wednesdays 7-9pm               Sonya Fucci                        Park 231
+Thursdays 7-9pm                My Nguyen                          Park 231
 --------------------           ------------------------------     ----------------------
 </div>
--->
 
 Goals of course
 ---------------
