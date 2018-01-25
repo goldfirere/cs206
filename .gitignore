@@ -15,3 +15,5 @@ java.policy.applet
 *.ptb
 *.o
 *.hi
+.classpath
+.project

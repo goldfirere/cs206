@@ -1,0 +1,43 @@
+I. Compiling Java
+II. Types
+III. Collaboration
+IV. Code-reading
+V. Classes
+
+Names (9:55-10:00)
+
+Compiling Java (10:00-10:15)
+ - Eclipse features
+   - editor window
+   - project explorer
+      - projects / files
+   - outline
+   - Console
+   - Javadoc
+   - refactoring tools
+   - running
+   - collapsing
+
+ - .java vs .class files
+ - virtual machines
+ - jar files
+
+Types (10:15-10:30)
+ - everything has a type
+ - type serves two roles:
+    - describes the shape of the data
+    - describes the set of operations that are allowed to be performed
+ - in Java, a type serves another role:
+    - types disambiguate operations
+ - Example: + on int vs + on double.
+ - Conversions and casts (incl. example)
+
+Collaboration (10:30-10:45)
+
+Code-reading (10:45-11:00)
+
+Classes (11:00-11:15)
+ - A class groups data and operations
+ - It creates **a new type**
+ - Methods operate on classes
+ - A `static` thing simply operates without an object.

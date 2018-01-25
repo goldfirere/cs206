@@ -1,0 +1,7 @@
+How to "read" the textbook
+It's OK if you haven't used Java before
+"concepts"
+
+--> Java <--
+
+HW1

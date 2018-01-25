@@ -60,7 +60,6 @@ public class DivisibleBy5
 	 *  @param n The number to test for divisibility.
 	 *  @return True if the number is divisible by 5; false otherwise
 	 */
-	
 	private static boolean isDivisibleBy5(int n)
 	{
 		return (n % 5 == 0);
