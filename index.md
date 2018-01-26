@@ -118,7 +118,7 @@ Much class time in CS206 will be spent working with peers to solve small
 programming problems, conduct peer reviews, and complete other exercises.
 There will also be lecture components.
 
-<img id="textbook" src="images/textbook.jpg" />
+<img id="textbook" src="images/textbook.jpg" alt="Koffman/Wolfgang text cover"/>
 
 Materials
 =========

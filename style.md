@@ -21,8 +21,8 @@ for making your code readable and for enabling others to understand, use, and
 modify your code in the future.
 
 While I do not expect anyone (including myself) to follow all the rules,
-[here](https://www.doc.ic.ac.uk/lab/cplus/cstyle.html) is a *very* detailed
-guide used as an inspiration (adapted for Java) for the notes below.
+this [*very* detailed guide](https://www.doc.ic.ac.uk/lab/cplus/cstyle.html) was 
+used as an inspiration (adapted for Java) for the notes below.
 
 Intentional coding
 ------------------
