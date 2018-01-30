@@ -9,7 +9,7 @@
 *.class
 _site
 _cache
-/.metadata/
+.metadata
 bin
 java.policy.applet
 *.ptb

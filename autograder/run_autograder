@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd /autograder/source
+
+java -cp auto.jar:. Test
+
+
