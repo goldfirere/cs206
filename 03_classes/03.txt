@@ -1,0 +1,38 @@
+Collaboration
+
+I. Administrivia
+II. Collaboration
+III. Classes, Objects, and Methods
+IV. Aliasing
+V. Strings
+VI. Equality
+
+Administrivia (9:55-10:00)
+ - sign up for Piazza!
+ - complete the survey!
+
+Collaboration (10:00-10:15)
+
+Classes, Objects, & Methods (10:15-10:35)
+ - Parameter passing
+ - returning
+ - objects
+ - message-passing
+ - `static`
+
+Aliasing (10:35-10:45)
+ - primitive types don't alias
+ - reference types do
+ - without a method
+ - with a method
+ - draw it out
+
+Exercise (10:45-11:00)
+
+Strings (11:00-11:05)
+ - Javadoc
+ - examples on screen
+ 
+Equality (11:05-11:15)
+ - equals!
+ - draw diagrams

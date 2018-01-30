@@ -44,8 +44,8 @@ represents my aims.
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 +---+-----+---------------------+-------------------+-------------------+----------------+-------------------+
-| 3 |1/30 | * Strings           |                   | * Read KW A.8, pp.|                |                   |
-|   |     | * Object comparison |                   |645-654.           |                |                   |
+| 3 |1/30 | * Strings           |                   | * Read KW A.8, pp.|\$examples03\$  | [Aliasing         |
+|   |     | * Object comparison |                   |645-654.           |                |worksheet]         |
 |   |     | * Classes           |                   | * Read KW A.10,   |                |                   |
 |   |     | * Methods           |                   |pp. 658-665,       |                |                   |
 |   |     |                     |                   |focusing on        |                |                   |
@@ -355,3 +355,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Reverse Polish notation]: https://en.wikipedia.org/wiki/Reverse_Polish_notation
 [Assignment 1]: hw01/Warmup.pdf
 [Collaboration scenarios]: 02/CollaborationScenarios.pdf
+[Aliasing worksheet]: 03/Aliasing.pdf
