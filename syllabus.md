@@ -54,9 +54,9 @@ represents my aims.
 |   |     |                     |                   |A.11-A.12, pp.     |                |                   |
 |   |     |                     |                   |665-676            |                |                   |
 +---+-----+---------------------+-------------------+-------------------+----------------+-------------------+
-|L2 |1/31 | * Errors            |                   |                   |                |                   |
-|   |     | * Classes           |                   |                   |                |                   |
+|L2 |1/31 | * Errors            |                   |                   |                | [Lab 2]           |
 |   |     | * Exceptions        |                   |                   |                |                   |
+|   |     | * Files             |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
@@ -356,3 +356,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Assignment 1]: hw01/Warmup.pdf
 [Collaboration scenarios]: 02/CollaborationScenarios.pdf
 [Aliasing worksheet]: 03/Aliasing.pdf
+[Lab 2]: lab02/Lab2.pdf
