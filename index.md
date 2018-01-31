@@ -131,9 +131,15 @@ The textbook for this course is:
 and Paul A. T. Wolfgang (2nd edition). John Wiley & Sons, Inc., 2010. Available
 at the campus bookstore.
 
-We will also make extensive use of the Java API. The documentation for this API is here:
+We will make extensive use of the Java API. The documentation for this API is here:
 
 * [Java 8 API Reference](https://docs.oracle.com/javase/8/docs/api/)
+
+Testing will be done using a library called JUnit. Here are some useful JUnit links:
+
+* [Main JUnit website](http://junit.org/junit5/)
+* [JUnit API documentation](http://junit.org/junit5/docs/current/api/)
+* [JUnit User Manual](http://junit.org/junit5/docs/current/user-guide/)
 
 Our programming will be done using [Eclipse](http://eclipse.org/), a professionally-used
 *integrated development environment* (IDE). This free software is powerful and can be

@@ -1,0 +1,28 @@
+I. Arrays
+II. JUnit
+III. Exceptions
+IV. File I/O
+
+Arrays (9:55-10:10)
+ - syntax
+ - semantics
+ - index from 0
+ - findFirst
+
+JUnit (10:10-10:30)
+ - Main idea
+ - demo
+ - javadoc / user manual
+ - making CounterTest
+
+EXERCISE: write isPalindrome; test.
+
+Exceptions (10:55-11:05)
+ - what they are: exceptional situations
+ - Javadoc listing of exceptions
+ - RuntimeExceptions vs checked exceptions
+ - try/catch
+ - errors vs exceptions
+
+File I/O (11:05-11:15)
+ - PrintFile example

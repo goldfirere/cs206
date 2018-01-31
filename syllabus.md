@@ -62,11 +62,11 @@ represents my aims.
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 +---+-----+---------------------+-------------------+-------------------+----------------+-------------------+
-| 4 |2/1  | * Exceptions        | * [Assignment 1]  | * Read KW 1.1-1.3,|                |                   |
-|   |     | * File I/O          |        due        |pp. 1-21           |                |                   |
-|   |     | * Unit testing with |* Assignment 2 out | * Read KW 2.11,   |                |                   |
-|   |     |JUnit                |                   |pp. 130-138        |                |                   |
-|   |     |                     |                   |(stopping at       |                |                   |
+| 4 |2/1  | * Exceptions        | * [Assignment 1]  | * Read KW 1.1-1.3,|\$examples04\$  |                   |
+|   |     | * Arrays            |        due        |pp. 1-21           |                |                   |
+|   |     | * File I/O          |* Assignment 2 out | * Read KW 2.11,   |                |                   |
+|   |     | * Unit testing with |                   |pp. 130-138        |                |                   |
+|   |     |JUnit                |                   |(stopping at       |                |                   |
 |   |     |                     |                   |"Testing Class     |                |                   |
 |   |     |                     |                   |`OrderedList`")    |                |                   |
 |   |     |                     |                   | * Read KW D.1, pp.|                |                   |
