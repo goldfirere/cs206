@@ -62,10 +62,10 @@ represents my aims.
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 +---+-----+---------------------+-------------------+-------------------+----------------+-------------------+
-| 4 |2/1  | * Exceptions        | * [Assignment 1]  | * Read KW 1.1-1.3,|\$examples04\$  |                   |
-|   |     | * Arrays            |        due        |pp. 1-21           |                |                   |
-|   |     | * File I/O          |* Assignment 2 out | * Read KW 2.11,   |                |                   |
-|   |     | * Unit testing with |                   |pp. 130-138        |                |                   |
+| 4 |2/1  | * Exceptions        | * [Assignment 1]  | * Read KW 1.1-1.3,|\$examples04\$  |* [uszipcodes.csv] |
+|   |     | * Arrays            |        due        |pp. 1-21           |                |* [testZip.csv]    |
+|   |     | * File I/O          | * [Assignment 2]  | * Read KW 2.11,   |                |                   |
+|   |     | * Unit testing with |        out        |pp. 130-138        |                |                   |
 |   |     |JUnit                |                   |(stopping at       |                |                   |
 |   |     |                     |                   |"Testing Class     |                |                   |
 |   |     |                     |                   |`OrderedList`")    |                |                   |
@@ -96,9 +96,9 @@ represents my aims.
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 +---+-----+---------------------+-------------------+-------------------+----------------+-------------------+
-| 7 |2/13 | * Java Collections  |* Assignment 2 due | * Read KW 2.4, pp.|                |                   |
-|   |     | * `ArrayList`       |* Assignment 3 out |77-87              |                |                   |
-|   |     | * Generic           |                   |                   |                |                   |
+| 7 |2/13 | * Java Collections  | * [Assignment 2]  | * Read KW 2.4, pp.|                |                   |
+|   |     | * `ArrayList`       |due                |77-87              |                |                   |
+|   |     | * Generic           | * Assignment 3 out|                   |                |                   |
 |   |     |(parameterized) types|                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
 |   |     |                     |                   |                   |                |                   |
@@ -357,3 +357,6 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Collaboration scenarios]: 02/CollaborationScenarios.pdf
 [Aliasing worksheet]: 03/Aliasing.pdf
 [Lab 2]: lab02/Lab2.pdf
+[Assignment 2]: hw02/ZipArray.pdf
+[uszipcodes.csv]: hw02/uszipcodes.csv
+[testZip.csv]: hw02/testZip.csv
