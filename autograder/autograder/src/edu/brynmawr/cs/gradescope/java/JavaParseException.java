@@ -1,4 +1,6 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.java;
+
+import edu.brynmawr.cs.gradescope.run.*;
 
 /** Exceptions when a Java file is malformed somehow
  * @author Richard Eisenberg

@@ -1,4 +1,6 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.java;
+
+import edu.brynmawr.cs.gradescope.run.*;
 
 /** Represents exceptions due to a malformed system environment
  * @author Richard Eisenberg

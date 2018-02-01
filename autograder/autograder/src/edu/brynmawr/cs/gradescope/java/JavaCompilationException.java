@@ -1,7 +1,9 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.java;
 
 import java.util.*;
 import java.util.stream.*;
+
+import edu.brynmawr.cs.gradescope.run.*;
 
 /** An exception representing compilation failure in user code
  * @author Richard Eisenberg

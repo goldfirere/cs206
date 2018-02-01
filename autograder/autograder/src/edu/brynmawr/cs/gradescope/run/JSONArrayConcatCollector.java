@@ -6,6 +6,8 @@ import java.util.stream.*;
 
 import org.json.*;
 
+import edu.brynmawr.cs.gradescope.util.*;
+
 public class JSONArrayConcatCollector implements Collector<JSONArray, JSONArray, JSONArray>
 {
 	@Override

@@ -1,4 +1,4 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.util;
 
 /** An immutable pair of values
  * 

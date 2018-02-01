@@ -6,6 +6,7 @@ import java.util.stream.*;
 
 import org.json.*;
 
+import edu.brynmawr.cs.gradescope.java.*;
 import edu.brynmawr.cs.gradescope.test.*;
 
 /** A class to run a bunch of test cases
@@ -14,89 +15,19 @@ import edu.brynmawr.cs.gradescope.test.*;
  */
 public class AutogradeSession
 {
-	private List<ProgramToTest> progs;
+	private List<ClassToTest> classes;
 	
-	private Map<ProgramToTest, List<TestResult>> results;
+	private Map<ClassToTest, List<TestResult>> results;
 	private List<String> errors;
 
-	private static class TestResult
+	public AutogradeSession(List<ClassToTest> cs)
 	{
-		IntegrationTest test;
-		TestStatus status;
-		
-		TestResult(IntegrationTest t, TestStatus s)
-		{
-			test = t;
-			status = s;
-		}
-	}
-	
-	private static abstract class TestStatus
-	{
-		final boolean success;
-
-		TestStatus(boolean s)
-		{
-			success = s;
-		}
-		
-		abstract String render(String inputOutputDoc);
-	}
-	
-	private static class TestFailure extends TestStatus
-	{
-		String actualOutput;
-		
-		TestFailure(String output)
-		{
-			super(false);
-			actualOutput = output;
-		}
-		
-		@Override
-		String render(String inputOutputDoc)
-		{
-			return "Test failed.\n\n" + inputOutputDoc + "\n" +
-					   "Your output:\n" + actualOutput;
-		}
-	}
-	
-	private static class TestSuccess extends TestStatus
-	{
-		TestSuccess()
-		{
-			super(true);
-		}
-		
-		@Override
-		String render(String inputOutputDoc)
-		{
-			return "Test succeeded!\n\n" + inputOutputDoc;
-		}
-	}
-	
-	private static class TestTimeout extends TestStatus
-	{
-		TestTimeout()
-		{
-			super(false);
-		}
-		
-		@Override
-		String render(String inputOutputDoc)
-		{
-			return "Test timed out after 10 seconds.\n\n" + inputOutputDoc;
-		}
-	}
-	
-	public AutogradeSession(List<ProgramToTest> ps)
-	{
-		progs = ps;
+		classes = cs;
 		
 		results = new HashMap<>();
-		for(ProgramToTest prog : progs)
+		for(ClassToTest cls : classes)
 		{
-			results.put(prog, new ArrayList<>());
+			results.put(cls, new ArrayList<>());
 		}
 		
 		errors = new ArrayList<>();
@@ -104,20 +35,20 @@ public class AutogradeSession
 	
 	public void runAutograder()
 	{
-		System.out.println("Richard's Java autograder, v2");
+		System.out.println("Richard's Java autograder, v3");
 		
 		try
 		{
-			for(ProgramToTest prog : progs)
+			for(ClassToTest cls : classes)
 			{
 				JavaFile jf;
 				try
 				{
-					jf = new JavaFile(prog.getProgName());
+					jf = new JavaFile(cls.getClassName());
 				}
 				catch(JavaFileNotFoundException e)
 				{
-					reportError("File not found for " + prog.getProgName() + ".java");
+					reportError("File not found for " + cls.getClassName() + ".java");
 					continue;
 				}
 				
@@ -131,28 +62,10 @@ public class AutogradeSession
 					continue;
 				}
 				
-				for(IntegrationTest it : prog.getTests())
+				for(TestCase t : cls.getTests())
 				{
-					try
-					{
-						String output = jf.runProgram(it.getProgInput());
-
-						String outputNoWS = Util.dropWhitespace(output);
-						String expectedNoWS = Util.dropWhitespace(it.getExpectedOutput());
-						if(outputNoWS.equalsIgnoreCase(expectedNoWS))
-						{
-							reportSuccess(prog, it);
-						}
-						else
-						{
-							reportFailure(prog, it, output);
-						}
-
-					}
-					catch (ProgramTooSlowException e)
-					{
-						reportTimeout(prog, it);
-					}
+					TestResult result = t.runTest(jf);
+					results.get(cls).add(result);
 				}
 			}
 		}
@@ -165,27 +78,12 @@ public class AutogradeSession
 		writeResults();
 	}
 	
-	private void reportTimeout(ProgramToTest prog, IntegrationTest it)
-	{
-		results.get(prog).add(new TestResult(it, new TestTimeout()));
-	}
-
-	private void reportFailure(ProgramToTest prog, IntegrationTest it, String output)
-	{
-		results.get(prog).add(new TestResult(it, new TestFailure(output)));
-	}
-
-	private void reportSuccess(ProgramToTest prog, IntegrationTest it)
-	{
-		results.get(prog).add(new TestResult(it, new TestSuccess()));
-	}
-
 	private void reportError(String msg)
 	{
 		errors.add(msg);
 	}
 	
-	private JSONArray testToJSON(ProgramToTest prog)
+	private JSONArray testToJSON(ClassToTest prog)
 	{
 		JSONArray arr = new JSONArray();
 		
@@ -199,7 +97,7 @@ public class AutogradeSession
 			JSONObject test = new JSONObject();
 						
 			double score;
-			if(res.status.success)
+			if(res.success())
 			{
 				score = maxScore;
 			}
@@ -209,15 +107,12 @@ public class AutogradeSession
 			}
 			test.put("score", score);
 			test.put("max_score", maxScore);
-			
-			String inputOutputDoc = "Input:\n" + res.test.getProgInput() +
-                              "Expected output:\n" + res.test.getExpectedOutput();
-			
-			test.put("output", prog.getProgName() + ":\n" + res.status.render(inputOutputDoc));
+						
+			test.put("output", prog.getClassName() + ":\n" + res.render());
 			
 			test.put("visibility", "visible");
 			
-			if(res.test.isHidden())
+			if(res.getTest().isHidden())
 			{
 				hiddenPoints += score;
 				numHiddenTests++;
@@ -235,7 +130,7 @@ public class AutogradeSession
 			
 			test.put("score", hiddenPoints);
 			test.put("max_score", maxScore * numHiddenTests);
-			test.put("output", "Results of " + numHiddenTests + " hidden tests for " + prog.getProgName());
+			test.put("output", "Results of " + numHiddenTests + " hidden tests for " + prog.getClassName());
 			test.put("visibility", "visible");
 			arr.put(test);
 		}
@@ -259,7 +154,7 @@ public class AutogradeSession
 		obj.put("visibility", "visible");
 		obj.put("stdout_visibility", "hidden");
 		
-		Stream<JSONArray> tests = progs.stream().map(this::testToJSON);
+		Stream<JSONArray> tests = classes.stream().map(this::testToJSON);
 		JSONArray allTests = tests.collect(new JSONArrayConcatCollector());
 		
 		obj.put("tests", allTests);

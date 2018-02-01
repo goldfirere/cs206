@@ -6,14 +6,14 @@ import java.util.*;
  * @author Richard Eisenberg
  *
  */
-public class ProgramToTest
+public class ClassToTest
 {
 	private String progName;
-	private List<IntegrationTest> tests;
+	private List<TestCase> tests;
 	
 	private double numPoints;
 	
-	public ProgramToTest(String className, double points, IntegrationTest... ts)
+	public ClassToTest(String className, double points, TestCase... ts)
 	{
 		progName = className;
 		numPoints = points;
@@ -23,7 +23,7 @@ public class ProgramToTest
 	/**
 	 * @return the program name
 	 */
-	public String getProgName()
+	public String getClassName()
 	{
 		return progName;
 	}
@@ -31,7 +31,7 @@ public class ProgramToTest
 	/**
 	 * @return the list of integration tests
 	 */
-	public List<IntegrationTest> getTests()
+	public List<TestCase> getTests()
 	{
 		return tests;
 	}
@@ -55,7 +55,7 @@ public class ProgramToTest
 	{
 		try
 		{
-			return progName.equals(((ProgramToTest)other).progName);
+			return progName.equals(((ClassToTest)other).progName);
 		}
 		catch(ClassCastException e)
 		{

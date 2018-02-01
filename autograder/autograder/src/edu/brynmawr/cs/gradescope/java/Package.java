@@ -1,4 +1,4 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.java;
 
 import java.util.*;
 

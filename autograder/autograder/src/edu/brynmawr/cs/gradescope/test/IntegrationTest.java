@@ -1,22 +1,25 @@
 package edu.brynmawr.cs.gradescope.test;
 
-public class IntegrationTest
+import edu.brynmawr.cs.gradescope.java.*;
+import edu.brynmawr.cs.gradescope.util.*;
+
+public class IntegrationTest extends TestCase
 {
 	private String progInput;
 	private String expectedOutput;
-	private boolean hidden = false;
 	
 	public IntegrationTest(String in, String out)
 	{
+		super(false);
 		progInput = in;
 		expectedOutput = out;
 	}
 	
 	public IntegrationTest(String in, String out, boolean hide)
 	{
+		super(hide);
 		progInput = in;
 		expectedOutput = out;
-		hidden = hide;
 	}
 	
 	/**
@@ -35,8 +38,32 @@ public class IntegrationTest
 		return expectedOutput;
 	}
 	
-	public boolean isHidden()
+	@Override
+	public TestResult runTest(JavaFile jf)
+	  throws BorkedException
 	{
-		return hidden;
+		String inputOutputDoc = "Input:\n" + progInput +
+        "Expected output:\n" + expectedOutput;
+		
+		try
+		{
+			String output = jf.runProgram(progInput);
+
+			String outputNoWS = Util.dropWhitespace(output);
+			String expectedNoWS = Util.dropWhitespace(expectedOutput);
+			if(outputNoWS.equalsIgnoreCase(expectedNoWS))
+			{
+				return new TestSuccess(this, inputOutputDoc);
+			}
+			else
+			{
+				return new TestFailure(this, inputOutputDoc, output);
+			}
+
+		}
+		catch (ProgramTooSlowException e)
+		{
+			return new TestTimeout(this, inputOutputDoc);
+		}	
 	}
 }

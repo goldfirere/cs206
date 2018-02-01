@@ -1,7 +1,12 @@
-package edu.brynmawr.cs.gradescope.run;
+package edu.brynmawr.cs.gradescope.java;
 
 import java.io.*;
+import java.lang.reflect.*;
+import java.net.*;
 import java.util.stream.*;
+
+import edu.brynmawr.cs.gradescope.util.*;
+
 import java.util.*;
 import java.util.function.*;
 
@@ -16,6 +21,8 @@ public class JavaFile
 	
 	private File path; // where is this file (absolute pathname)
 	private File root; // where the package structure is rooted
+	
+	private Class<?> klass; // the loaded class
 	
 	/** Construct a new JavaFile for a given class. Always searches in
 	 * the /autograder/submission directory.
@@ -333,5 +340,96 @@ public class JavaFile
 		
 		// return output:
 		return new BufferedReader(new InputStreamReader(java.getInputStream())).lines().collect(Collectors.joining("\n"));
+	}
+	
+	/** Loads this class, making it available for method lookup.
+	 */
+	public void load() throws BorkedException
+	{
+		if(klass == null)
+		{
+			URL rootURL;
+			try
+			{
+				rootURL = root.toURI().toURL();
+			}
+			catch (MalformedURLException e)
+			{
+				throw new BorkedException("Malformed URL during dynamic loading", e);
+			}
+			URLClassLoader loader = new URLClassLoader(new URL[] { rootURL });
+			
+			String fullyQualified = pack.getNumComponents() == 0 ? className :
+														pack.getPackage() + "." + className;
+			try
+			{
+				klass = loader.loadClass(fullyQualified);
+			}
+			catch (ClassNotFoundException e)
+			{
+				throw new BorkedException("Can't find class during loading", e);
+			}
+		}
+	}
+	
+	/** An Iterator that can be consed back onto
+	 * @author Richard Eisenberg
+	 *
+	 * @param <T> The element type stored here
+	 */
+	private class ConsIterator<T> implements Iterator<T> 
+	{
+		private Stack<T> consed; // Extra elements consed onto the beginning
+		private Iterator<T> iter; // The underlying iterator
+		
+		/** Construct a ConsIterator based on an existing iterator
+		 * @param base The original element iterator
+		 */
+		public ConsIterator(Iterator<T> base)
+		{
+			consed = new Stack<T>();
+			iter = base;
+		}
+
+		@Override
+		public boolean hasNext()
+		{
+			return !consed.isEmpty() || iter.hasNext();
+		}
+
+		@Override
+		public T next()
+		{
+			if(consed.isEmpty())
+			{
+				return iter.next();
+			}
+			else
+			{
+				return consed.pop();
+			}
+		}
+		
+		/** Add a new element on the beginning of this iterator
+		 * @param t The new element
+		 */
+		public void cons(T t)
+		{
+			consed.push(t);
+		}
+	}
+
+	public Method getMethod(String methodName, Class<?>[] arguments) 
+			throws BorkedException, NoSuchMethodException
+	{
+		load();
+		try
+		{
+			return klass.getMethod(methodName, arguments);
+		}
+		catch (SecurityException e)
+		{
+			throw new BorkedException("Security exception", e); 
+		}
 	}
 }
