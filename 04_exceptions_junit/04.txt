@@ -1,7 +1,10 @@
 I. Arrays
 II. JUnit
-III. Exceptions
-IV. File I/O
+III. Aliasing
+IV. Encapsulation
+V. null
+VI. Exceptions
+VII. File I/O
 
 Arrays (9:55-10:10)
  - syntax
@@ -9,14 +12,21 @@ Arrays (9:55-10:10)
  - index from 0
  - findFirst
 
-JUnit (10:10-10:30)
+JUnit (10:10-10:15)
  - Main idea
  - demo
  - javadoc / user manual
- - making CounterTest
 
-EXERCISE: write isPalindrome; test.
+EXERCISE: aliasing (10:15-10:35)
 
+Encapsulation (10:35-10:50)
+ - private vs public
+ - getters/accessors
+ - setters/mutators
+ - abstraction
+
+**null** (10:50-10:55)
+ 
 Exceptions (10:55-11:05)
  - what they are: exceptional situations
  - Javadoc listing of exceptions
