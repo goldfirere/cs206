@@ -17,5 +17,8 @@ public class InClass3
 		System.out.println(c2.get());
 		
 		System.out.println("hello".indexOf("eg"));
+		
+		int x = 5 / 0;
+		System.out.println(x);
 	}
 }
