@@ -65,5 +65,9 @@ public class IntegrationTest extends TestCase
 		{
 			return new TestTimeout(this, inputOutputDoc);
 		}	
+		catch (NoMainException e)
+		{
+			return new TestError(this, e.getMessage());
+		}
 	}
 }

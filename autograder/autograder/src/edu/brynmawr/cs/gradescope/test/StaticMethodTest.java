@@ -39,8 +39,8 @@ public class StaticMethodTest extends TestCase
 		}
 		catch (NoSuchMethodException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e); // for debugging
+			return new TestError(this, "Could not find method " + method.getMethodName() + " in " + jf.getName() + ".\n");
 		}
 		
 		Object actualResult = m.invoke(null, arguments);

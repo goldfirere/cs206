@@ -28,4 +28,9 @@ public class StaticMethodAccess
 		
 		return method;
 	}
+
+	public String getMethodName()
+	{
+		return methodName;
+	}
 }

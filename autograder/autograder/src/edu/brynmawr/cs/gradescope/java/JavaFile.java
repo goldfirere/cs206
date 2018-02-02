@@ -289,8 +289,9 @@ public class JavaFile
 	 * @return Program output
 	 * @throws BorkedException Drastic system failure
 	 * @throws ProgramTooSlowException Program took more than 10 seconds to run
+	 * @throws NoMainException If the Java file has no main method
 	 */
-	public String runProgram(String input) throws BorkedException, ProgramTooSlowException
+	public String runProgram(String input) throws BorkedException, ProgramTooSlowException, NoMainException
 	{
 		Process java;
 		try
@@ -335,7 +336,7 @@ public class JavaFile
 		if(exitCode != 0)
 		{
 			String errors = new BufferedReader(new InputStreamReader(java.getErrorStream())).lines().collect(Collectors.joining("\n"));
-			throw new BorkedException("`java` process failed:\n" + errors);
+			throw new NoMainException(className, errors);
 		}
 		
 		// return output:
@@ -431,5 +432,10 @@ public class JavaFile
 		{
 			throw new BorkedException("Security exception", e); 
 		}
+	}
+
+	public String getName()
+	{
+		return className;
 	}
 }
