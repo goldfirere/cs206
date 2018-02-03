@@ -28,4 +28,12 @@ public abstract class TestResult
 	{
 		return test;
 	}
+
+	/** Returns the weight of this test (how many times it should count).
+	 * @return The test weight. The default value is 1.
+	 */
+	public double getWeight()
+	{
+		return 1;
+	}
 }

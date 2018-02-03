@@ -1,5 +1,7 @@
 package edu.brynmawr.cs.gradescope.test;
 
+import java.util.*;
+
 import edu.brynmawr.cs.gradescope.java.*;
 
 public abstract class TestCase
@@ -11,8 +13,10 @@ public abstract class TestCase
 		hidden = h;
 	}
 	
-	public abstract TestResult runTest(JavaFile jf)
+	public abstract List<TestResult> runTest(JavaFile jf)
 	  throws BorkedException;
+	
+	public abstract double getWeight();
 	
 	public boolean isHidden()
 	{

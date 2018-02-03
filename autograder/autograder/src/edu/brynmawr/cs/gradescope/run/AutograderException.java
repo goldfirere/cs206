@@ -20,7 +20,7 @@ public class AutograderException extends Exception
 	 * @param reason A textual description of the problem
 	 * @param cause An underlying exception
 	 */
-	public AutograderException(String reason, Exception cause)
+	public AutograderException(String reason, Throwable cause)
 	{
 		super(reason, cause);
 	}

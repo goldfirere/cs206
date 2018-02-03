@@ -19,7 +19,7 @@ public class BorkedException extends AutograderException
 	 * @param s Problem description
 	 * @param e Underlying exception
 	 */
-	public BorkedException(String s, Exception e)
+	public BorkedException(String s, Throwable e)
 	{
 		super("System is borked: " + s, e);
 	}

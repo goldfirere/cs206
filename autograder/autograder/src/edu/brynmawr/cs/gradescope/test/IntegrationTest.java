@@ -1,5 +1,7 @@
 package edu.brynmawr.cs.gradescope.test;
 
+import java.util.*;
+
 import edu.brynmawr.cs.gradescope.java.*;
 import edu.brynmawr.cs.gradescope.util.*;
 
@@ -39,7 +41,7 @@ public class IntegrationTest extends TestCase
 	}
 	
 	@Override
-	public TestResult runTest(JavaFile jf)
+	public List<TestResult> runTest(JavaFile jf)
 	  throws BorkedException
 	{
 		String inputOutputDoc = "Input:\n" + progInput +
@@ -53,21 +55,27 @@ public class IntegrationTest extends TestCase
 			String expectedNoWS = Util.dropWhitespace(expectedOutput);
 			if(outputNoWS.equalsIgnoreCase(expectedNoWS))
 			{
-				return new TestSuccess(this, inputOutputDoc);
+				return Collections.singletonList(new TestSuccess(this, inputOutputDoc));
 			}
 			else
 			{
-				return new TestFailure(this, inputOutputDoc, output);
+				return Collections.singletonList(new TestFailure(this, inputOutputDoc, output));
 			}
 
 		}
 		catch (ProgramTooSlowException e)
 		{
-			return new TestTimeout(this, inputOutputDoc);
+			return Collections.singletonList(new TestTimeout(this, inputOutputDoc));
 		}	
 		catch (NoMainException e)
 		{
-			return new TestError(this, e.getMessage());
+			return Collections.singletonList(new TestError(this, e.getMessage()));
 		}
+	}
+	
+	@Override
+	public double getWeight()
+	{
+		return 1.0;
 	}
 }

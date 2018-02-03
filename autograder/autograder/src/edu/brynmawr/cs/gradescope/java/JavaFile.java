@@ -22,6 +22,8 @@ public class JavaFile
 	private File path; // where is this file (absolute pathname)
 	private File root; // where the package structure is rooted
 	
+	private static URLClassLoader classLoader = null;
+	
 	private Class<?> klass; // the loaded class
 	
 	/** Construct a new JavaFile for a given class. Always searches in
@@ -99,6 +101,21 @@ public class JavaFile
 		int numPackageComponents = pack.getNumComponents();
 		File directory = path.getParentFile();
 		root = new File(directory, String.join("/", Collections.nCopies(numPackageComponents, "..")));
+		
+		if(classLoader == null)
+		{
+			URL rootURL;
+			try
+			{
+				rootURL = root.toURI().toURL();
+			}
+			catch (MalformedURLException e)
+			{
+				throw new BorkedException("Malformed URL during dynamic loading", e);
+			}
+			
+			classLoader = new URLClassLoader(new URL[] { rootURL });
+		}
 	}
 
 	private Package getPackage(ConsIterator<String> fileLines)
@@ -348,23 +365,12 @@ public class JavaFile
 	public void load() throws BorkedException
 	{
 		if(klass == null)
-		{
-			URL rootURL;
-			try
-			{
-				rootURL = root.toURI().toURL();
-			}
-			catch (MalformedURLException e)
-			{
-				throw new BorkedException("Malformed URL during dynamic loading", e);
-			}
-			URLClassLoader loader = new URLClassLoader(new URL[] { rootURL });
-			
+		{			
 			String fullyQualified = pack.getNumComponents() == 0 ? className :
 														pack.getPackage() + "." + className;
 			try
 			{
-				klass = loader.loadClass(fullyQualified);
+				klass = classLoader.loadClass(fullyQualified);
 			}
 			catch (ClassNotFoundException e)
 			{
@@ -420,7 +426,7 @@ public class JavaFile
 		}
 	}
 
-	public Method getMethod(String methodName, Class<?>[] arguments) 
+	public Method getMethod(String methodName, Class<?>... arguments) 
 			throws BorkedException, NoSuchMethodException
 	{
 		load();
