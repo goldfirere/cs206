@@ -4,9 +4,9 @@ public class TestSuccess extends TestResult
 {
 	private String doc;
 	
-	public TestSuccess(TestCase test, String d)
+	public TestSuccess(String d)
 	{
-		super(test, true);
+		super(true);
 		doc = d;
 	}
 	

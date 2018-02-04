@@ -67,10 +67,15 @@ represents my aims.
 |   |     | * File I/O          | * [Assignment 2]  | * Read KW 2.11,   |                | *                      |
 |   |     | * Unit testing with |        out        |pp. 130-138        |                |[ZipParseException.java]|
 |   |     |JUnit                |                   |(stopping at       |                |                        |
-|   |     |                     |                   |"Testing Class     |                |                        |
-|   |     |                     |                   |`OrderedList`")    |                |                        |
+|   |     |                     |                   |"Testing Class     |                |Test files (as used by  |
+|   |     |                     |                   |`OrderedList`")    |                |autograder):            |
 |   |     |                     |                   | * Read KW D.1, pp.|                |                        |
-|   |     |                     |                   |764-767            |                |                        |
+|   |     |                     |                   |764-767            |                | * [zip1.csv]           |
+|   |     |                     |                   |                   |                | * [zip2.csv]           |
+|   |     |                     |                   |                   |                | * [zip3.csv]           |
+|   |     |                     |                   |                   |                | * [zip4.csv]           |
+|   |     |                     |                   |                   |                | * [zip5.csv]           |
+|   |     |                     |                   |                   |                | * [zip6.csv]           |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
 | 5 |2/6  | * Inheritance       |                   | * Read KW 1.4-1.8,|                |                        |
 |   |     | * Superclass        |                   |pp. 21-52          |                |                        |
@@ -361,3 +366,9 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [uszipcodes.csv]: hw02/uszipcodes.csv
 [testZip.csv]: hw02/testZip.csv
 [ZipParseException.java]: hw02/ZipParseException.java
+[zip1.csv]: hw02/zip1.csv
+[zip2.csv]: hw02/zip2.csv
+[zip3.csv]: hw02/zip3.csv
+[zip4.csv]: hw02/zip4.csv
+[zip5.csv]: hw02/zip5.csv
+[zip6.csv]: hw02/zip6.csv

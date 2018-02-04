@@ -7,19 +7,13 @@ import edu.brynmawr.cs.gradescope.util.*;
 
 public class IntegrationTest extends TestCase
 {
+	private JavaFile program;
 	private String progInput;
 	private String expectedOutput;
 	
-	public IntegrationTest(String in, String out)
+	public IntegrationTest(JavaFile prog, String in, String out)
 	{
-		super(false);
-		progInput = in;
-		expectedOutput = out;
-	}
-	
-	public IntegrationTest(String in, String out, boolean hide)
-	{
-		super(hide);
+		program = prog;
 		progInput = in;
 		expectedOutput = out;
 	}
@@ -41,7 +35,7 @@ public class IntegrationTest extends TestCase
 	}
 	
 	@Override
-	public List<TestResult> runTest(JavaFile jf)
+	public List<TestResult> runTest()
 	  throws BorkedException
 	{
 		String inputOutputDoc = "Input:\n" + progInput +
@@ -49,33 +43,27 @@ public class IntegrationTest extends TestCase
 		
 		try
 		{
-			String output = jf.runProgram(progInput);
+			String output = program.runProgram(progInput);
 
 			String outputNoWS = Util.dropWhitespace(output);
 			String expectedNoWS = Util.dropWhitespace(expectedOutput);
 			if(outputNoWS.equalsIgnoreCase(expectedNoWS))
 			{
-				return Collections.singletonList(new TestSuccess(this, inputOutputDoc));
+				return Collections.singletonList(new TestSuccess(inputOutputDoc));
 			}
 			else
 			{
-				return Collections.singletonList(new TestFailure(this, inputOutputDoc, output));
+				return Collections.singletonList(new TestFailure(inputOutputDoc, output));
 			}
 
 		}
 		catch (ProgramTooSlowException e)
 		{
-			return Collections.singletonList(new TestTimeout(this, inputOutputDoc));
+			return Collections.singletonList(new TestTimeout(inputOutputDoc));
 		}	
 		catch (NoMainException e)
 		{
-			return Collections.singletonList(new TestError(this, e.getMessage()));
+			return Collections.singletonList(new TestError(e.getMessage()));
 		}
-	}
-	
-	@Override
-	public double getWeight()
-	{
-		return 1.0;
 	}
 }

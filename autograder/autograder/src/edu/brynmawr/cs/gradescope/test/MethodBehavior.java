@@ -2,11 +2,13 @@ package edu.brynmawr.cs.gradescope.test;
 
 import java.util.*;
 
+import edu.brynmawr.cs.gradescope.java.*;
+
 public class MethodBehavior
 {
 	private final Object[] arguments;
 	private final Optional<Object> result;
-	private final Optional<Class<? extends Throwable>> exception;
+	private final Optional<JavaExceptionClass> exception;
 
 	public MethodBehavior(Object res, Object... args)
 	{
@@ -15,11 +17,18 @@ public class MethodBehavior
 		exception = Optional.empty();
 	}
 	
-	public MethodBehavior(Class<? extends Throwable> exc, Object... args)
+	public MethodBehavior(JavaExceptionClass exc, Object... args)
 	{
 		exception = Optional.of(exc);
 		arguments = args;
 		result = Optional.empty();
+	}
+	
+	@Deprecated
+	@SuppressWarnings("unused")
+	public MethodBehavior(Class<? extends Throwable> exc, Object... args)
+	{
+		throw new IllegalArgumentException();
 	}
 
 	/**
@@ -43,7 +52,7 @@ public class MethodBehavior
 		return result.isPresent();
 	}
 
-	public Optional<Class<? extends Throwable>> getExpectedException()
+	public Optional<JavaExceptionClass> getExpectedException()
 	{
 		return exception;
 	}

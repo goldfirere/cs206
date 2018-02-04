@@ -5,9 +5,9 @@ public class TestFailure extends TestResult
 	private String testDoc;
 	private String actualOutput;
 	
-	public TestFailure(TestCase test, String td, String output)
+	public TestFailure(String td, String output)
 	{
-		super(test, false);
+		super(false);
 		testDoc = td;
 		actualOutput = output;
 	}

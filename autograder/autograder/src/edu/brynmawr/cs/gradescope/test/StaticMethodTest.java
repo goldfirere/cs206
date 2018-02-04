@@ -12,63 +12,38 @@ import edu.brynmawr.cs.gradescope.java.*;
  */
 public class StaticMethodTest extends TestCase
 {
-	private String methodName;
-	private Class<?>[] argumentClasses;
+	private JavaMethod method;
 	private MethodBehavior[] behaviors;
 	
-	public StaticMethodTest(String methName, MethodBehavior... bs)
+	public StaticMethodTest(JavaMethod meth, MethodBehavior... bs)
 	{
-		this(false, methName, bs);
-	}
-	
-	public StaticMethodTest(boolean hide, String methName, MethodBehavior... bs)
-	{
-		this(hide, methName, getArgumentClasses(bs), bs);
-	}
-	
-	public StaticMethodTest(boolean hide, String methName, Class<?>[] argClasses, MethodBehavior... bs)
-	{	
-		super(hide);
-		
-		methodName = methName;
-		argumentClasses = argClasses;
+		method = meth;
 		behaviors = bs;
 	}
-	
-	private static Class<?>[] getArgumentClasses(MethodBehavior[] bs)
+		
+	@Override
+	public List<TestResult> runTest() throws BorkedException
 	{
-		if(bs.length == 0)
+		Method m;
+		if(method.isValid())
 		{
-			throw new IllegalArgumentException("A StaticMethodTest needs either the argument classes or at least one MethodBehavior.");
+			m = method.getMethod();
 		}
 		else
 		{
-			return Arrays.stream(bs[0].getArguments()).map(Object::getClass).toArray(Class<?>[]::new);
+			return Collections.singletonList(new MultPoints(behaviors.length, new TestError(method.getError())));
 		}
-	}
-	
-	@Override
-	public List<TestResult> runTest(JavaFile jf) throws BorkedException
-	{
-		Method method;
-		try
-		{
-			method = jf.getMethod(methodName, argumentClasses);
-		}
-		catch (NoSuchMethodException e)
-		{
-			System.out.println(e); // for debugging
-			return Collections.singletonList(new TestError(this, "Could not find method " + methodName + " in " + jf.getName() + ".\n", behaviors.length));
-		}
-
-		int modifiers = method.getModifiers();
+		
+		String methodName = m.getName();
+		String className = m.getDeclaringClass().getName();
+		int modifiers = m.getModifiers();
 		if(!Modifier.isStatic(modifiers))
 		{
-			return Collections.singletonList(new TestError(this, "Method " + methodName + " in " + jf.getName() + " is not static.\nPlease make it static, as requested in the assignment."));
+			return Collections.singletonList(new MultPoints(behaviors.length, new TestError("Method " + methodName + " in " + className + " is not static.\nPlease make it static, as requested in the assignment.")));
 		}
 		if(!Modifier.isPublic(modifiers))
 		{
-			return Collections.singletonList(new TestError(this, "Method " + methodName + " in " + jf.getName() + " is not public.\nPlease make it public."));
+			return Collections.singletonList(new MultPoints(behaviors.length, new TestError("Method " + methodName + " in " + className + " is not public.\nPlease make it public.")));
 		}
 		
 		List<TestResult> results = new ArrayList<TestResult>(behaviors.length);
@@ -78,44 +53,55 @@ public class StaticMethodTest extends TestCase
 			Object[] arguments = b.getArguments();
 			Optional<Object> expectedResult = b.getResult();
 
-			List<String> argStrings = Arrays.stream(arguments).map(Object::toString).collect(Collectors.toList());
+			List<String> argStrings = Arrays.stream(arguments).map(StaticMethodTest::render).collect(Collectors.toList());
 			String methodCallDoc = "Calling method " + methodName + "(" + String.join(", ", argStrings) + ")\n";
+			
+			if(!b.expectsResult())
+			{
+				if(!b.getExpectedException().get().isValid())
+				{
+					results.add(new TestError(methodCallDoc + "was expected to throw an exception, but\n" + b.getExpectedException().get().getError()));
+					continue;
+				}
+			}
 			
 			Object actualResult; 
 			try
 			{
-				actualResult = TimedOperation.timeOperation(() -> method.invoke(null, arguments));
+				actualResult = TimedOperation.timeOperation(() -> m.invoke(null, arguments));
 			}
 			catch (ExecutionException e)
 			{
 				Throwable f = e.getCause();
 				if(f instanceof IllegalAccessException)
 				{
-					throw new BorkedException("Method " + methodName + " in " + jf.getName() + " could not be called.", f);
+					throw new BorkedException("Method " + methodName + " in " + className + " could not be called.", f);
 				}
 				else if(f instanceof IllegalArgumentException)
 				{
-					throw new BorkedException("Method " + methodName + " in " + jf.getName() + " could not be called without an object.", f);
+					throw new BorkedException("Method " + methodName + " in " + className + " could not be called without an object.", f);
 				}
 				else if(f instanceof InvocationTargetException)
 				{
 					Throwable actualException = f.getCause();
-					Optional<Class<? extends Throwable>> expectedException = b.getExpectedException();
+					Optional<JavaExceptionClass> expectedException = b.getExpectedException();
 					
 					if(expectedException.isPresent())
 					{
-						if(expectedException.get().equals(actualException.getClass()))
+						JavaExceptionClass exception = expectedException.get();
+						Class<? extends Throwable> excClass = exception.getException();
+						if(excClass.equals(actualException.getClass()))
 						{
-							results.add(new TestSuccess(this, methodCallDoc + "threw exception " + actualException.getClass().getName() + ", as expected.\n"));
+							results.add(new TestSuccess(methodCallDoc + "threw exception " + actualException.getClass().getName() + ", as expected.\n"));
 						}
 						else
 						{
-							results.add(new TestError(this, methodCallDoc + "threw exception " + actualException.getClass().getName() + ",\nbut it should have thrown " + expectedException.get().getName() + ".\n"));
+							results.add(new TestError(methodCallDoc + "threw exception " + actualException.getClass().getName() + ",\nbut it should have thrown " + excClass.getName() + ".\n"));
 						}
 					}
 					else
 					{
-						results.add(new TestError(this, methodCallDoc + "threw exception " + actualException.getClass().getName() + ",\nbut it should have returned this:\n" + expectedResult.get()));
+						results.add(new TestError(methodCallDoc + "threw exception " + actualException.getClass().getName() + ",\nbut it should have returned this:\n" + render(expectedResult.get())));
 					}
 					continue;
 				}
@@ -126,7 +112,7 @@ public class StaticMethodTest extends TestCase
 			}
 			catch (ProgramTooSlowException e)
 			{
-				results.add(new TestTimeout(this, methodCallDoc + "took longer than 10 seconds to run.\n"));
+				results.add(new TestTimeout(methodCallDoc + "took longer than 10 seconds to run.\n"));
 				continue;
 			}
 
@@ -134,38 +120,177 @@ public class StaticMethodTest extends TestCase
 			{
 				Object expectedOutput = expectedResult.get();
 				
-				String testDoc = methodCallDoc + "Expected output: " + expectedOutput + "\n";
-					
-				try
+				String testDoc = methodCallDoc + "Expected output: " + render(expectedOutput) + "\n";
+
+				if(matches(expectedOutput, actualResult))
 				{
-					if(expectedOutput instanceof TestObject ?
-							((TestObject)expectedOutput).checkMethodResult(actualResult) :
-						  expectedOutput.equals(actualResult))
-					{
-						results.add(new TestSuccess(this, testDoc));
-					}
-					else
-					{
-						results.add(new TestFailure(this, testDoc, actualResult.toString()));
-					}
+					results.add(new TestSuccess(testDoc));
 				}
-				catch (TestErrorException e)
+				else
 				{
-					results.add(new TestError(this, methodCallDoc + "led to an error:\n" + e.getMessage()));
+					results.add(new TestFailure(testDoc, render(actualResult)));
 				}
 			}
 			else
 			{
-				results.add(new TestError(this, methodCallDoc + "was supposed to throw exception " + b.getExpectedException().get().getName() + ",\nbut it returned this instead:\n" + actualResult.toString()));
+				results.add(new TestError(methodCallDoc + "was supposed to throw exception " + b.getExpectedException().get().getException().getName() + ",\nbut it returned this instead:\n" + render(actualResult)));
 			}
 		}
 		
 		return results;
 	}
 	
-	@Override
-	public double getWeight()
+	private static boolean matches(Object expected, Object actual)
 	{
-		return behaviors.length;
+		if(expected instanceof String)
+		{
+			return expected.equals(actual.toString());
+		}
+		else if(expected.getClass().isArray())
+		{
+			try
+			{
+				if(expected instanceof int[] && actual instanceof int[])
+				{
+					int[] e = (int[])expected;
+					int[] a = (int[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof long[] && actual instanceof long[])
+				{
+					long[] e = (long[])expected;
+					long[] a = (long[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof short[] && actual instanceof short[])
+				{
+					short[] e = (short[])expected;
+					short[] a = (short[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof byte[] && actual instanceof byte[])
+				{
+					byte[] e = (byte[])expected;
+					byte[] a = (byte[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof float[] && actual instanceof float[])
+				{
+					float[] e = (float[])expected;
+					float[] a = (float[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof double[] && actual instanceof double[])
+				{
+					double[] e = (double[])expected;
+					double[] a = (double[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof char[] && actual instanceof char[])
+				{
+					char[] e = (char[])expected;
+					char[] a = (char[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else if(expected instanceof boolean[] && actual instanceof boolean[])
+				{
+					boolean[] e = (boolean[])expected;
+					boolean[] a = (boolean[])actual;
+					
+					return Arrays.equals(e, a);
+				}
+				else
+				{
+					Object[] e = (Object[])expected;
+					Object[] a = (Object[])actual;
+					
+					if(e.length == a.length)
+					{
+						for(int i = 0; i < e.length; i++)
+						{
+							if(!matches(e[i], a[i]))
+							{
+								return false;
+							}
+						}
+						
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+			catch (ClassCastException e)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return expected.equals(actual);
+		}
+	}
+	
+	private static String render(Object o)
+	{
+		if(o.getClass().isArray())
+		{
+			try
+			{
+				if(o instanceof int[])
+				{
+					return Arrays.toString((int[])o);
+				}
+				else if(o instanceof long[])
+				{
+					return Arrays.toString((long[])o);
+				}
+				else if(o instanceof short[])
+				{
+					return Arrays.toString((short[])o);
+				}
+				else if(o instanceof byte[])
+				{
+					return Arrays.toString((byte[])o);
+				}
+				else if(o instanceof float[])
+				{
+					return Arrays.toString((float[])o);
+				}
+				else if(o instanceof double[])
+				{
+					return Arrays.toString((double[])o);
+				}
+				else if(o instanceof char[])
+				{
+					return Arrays.toString((char[])o);
+				}
+				else if(o instanceof boolean[])
+				{
+					return Arrays.toString((boolean[])o);
+				}
+				else
+				{
+					return Arrays.toString((Object[])o);
+				}
+			}
+			catch (ClassCastException e)
+			{
+				return o.toString();
+			}
+		}
+		else
+		{
+			return o.toString();
+		}
 	}
 }

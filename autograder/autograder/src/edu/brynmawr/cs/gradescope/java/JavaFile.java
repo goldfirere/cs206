@@ -26,19 +26,25 @@ public class JavaFile
 	
 	private Class<?> klass; // the loaded class
 	
-	/** Construct a new JavaFile for a given class. Always searches in
+	public JavaFile(String name)
+	{
+		className = name;
+		
+		pack = null;
+		path = null;
+		root = null;
+		klass = null;
+	}
+	
+	/** Find a new JavaFile for a given class. Always searches in
 	 * the /autograder/submission directory.
 	 * 
-	 * @param c The name of the class
 	 * @throws JavaFileNotFoundException If we can't find the file
-	 * @throws JavaParseException If there is a parse error in the file
 	 * @throws BorkedException If something else goes drastically wrong
 	 */
-	public JavaFile(String c) throws JavaFileNotFoundException,
-	                                         BorkedException
+	public void find() throws JavaFileNotFoundException,
+	                          BorkedException
 	{
-		className = c;
-		
 		try
 		{
 			File submissionDir = new File("/autograder/submission");
@@ -101,21 +107,11 @@ public class JavaFile
 		int numPackageComponents = pack.getNumComponents();
 		File directory = path.getParentFile();
 		root = new File(directory, String.join("/", Collections.nCopies(numPackageComponents, "..")));
-		
-		if(classLoader == null)
-		{
-			URL rootURL;
-			try
-			{
-				rootURL = root.toURI().toURL();
-			}
-			catch (MalformedURLException e)
-			{
-				throw new BorkedException("Malformed URL during dynamic loading", e);
-			}
-			
-			classLoader = new URLClassLoader(new URL[] { rootURL });
-		}
+	}
+	
+	public boolean isFound()
+	{
+		return path != null;
 	}
 
 	private Package getPackage(ConsIterator<String> fileLines)
@@ -274,12 +270,22 @@ public class JavaFile
 		return path + ": class " + className + " in " + pack;
 	}
 	
+	public File getRoot()
+	{
+		return root;
+	}
+	
 	/** Compile the file.
 	 * @throws JavaCompilationException Compiler error.
 	 * @throws BorkedException Drastic system failure.
 	 */
 	public void compile() throws JavaCompilationException, BorkedException
 	{
+		if(!isFound())
+		{
+			return; // we don't have the file; avoid further errors
+		}
+		
 		try
 		{
 			Runtime rt = Runtime.getRuntime();
@@ -362,20 +368,22 @@ public class JavaFile
 	
 	/** Loads this class, making it available for method lookup.
 	 */
-	public void load() throws BorkedException
+	public void load(ClassLoader loader) throws BorkedException
 	{
-		if(klass == null)
-		{			
-			String fullyQualified = pack.getNumComponents() == 0 ? className :
-														pack.getPackage() + "." + className;
-			try
-			{
-				klass = classLoader.loadClass(fullyQualified);
-			}
-			catch (ClassNotFoundException e)
-			{
-				throw new BorkedException("Can't find class during loading", e);
-			}
+		if(!isFound())
+		{
+			return;
+		}
+		
+		String fullyQualified = pack.getNumComponents() == 0 ? className :
+													pack.getPackage() + "." + className;
+		try
+		{
+			klass = loader.loadClass(fullyQualified);
+		}
+		catch (ClassNotFoundException e)
+		{
+			throw new BorkedException("Can't find class " + className + " during loading", e);
 		}
 	}
 	
@@ -426,13 +434,21 @@ public class JavaFile
 		}
 	}
 
-	public Method getMethod(String methodName, Class<?>... arguments) 
-			throws BorkedException, NoSuchMethodException
+	public JavaMethod getMethod(String methodName, Class<?>... arguments) 
+			throws BorkedException
 	{
-		load();
+		if(klass == null)
+		{
+			return new JavaMethod("Cannot run method " + methodName + ": Enclosing class " + className + " did not compile.");
+		}
+		
 		try
 		{
-			return klass.getMethod(methodName, arguments);
+			return new JavaMethod(klass.getMethod(methodName, arguments));
+		}
+		catch (NoSuchMethodException e)
+		{
+			return new JavaMethod("Cannot run method " + methodName + ": Method with correct argument types not found.");
 		}
 		catch (SecurityException e)
 		{
@@ -443,5 +459,15 @@ public class JavaFile
 	public String getName()
 	{
 		return className;
+	}
+	
+	public boolean isLoaded()
+	{
+		return klass != null;
+	}
+	
+	public Class<?> getLoadedClass()
+	{
+		return klass;
 	}
 }

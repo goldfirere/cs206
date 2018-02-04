@@ -3,12 +3,10 @@ package edu.brynmawr.cs.gradescope.test;
 public abstract class TestResult
 {
 	private final boolean success;
-	private final TestCase test;
 	
-	public TestResult(TestCase t, boolean s)
+	public TestResult(boolean s)
 	{
 		success = s;
-		test = t;
 	}
 	
 	public abstract String render();
@@ -21,19 +19,18 @@ public abstract class TestResult
 		return success;
 	}
 
-	/**
-	 * @return the test
-	 */
-	public TestCase getTest()
+	public double getMaxScore()
 	{
-		return test;
+		return 1.0;
 	}
-
-	/** Returns the weight of this test (how many times it should count).
-	 * @return The test weight. The default value is 1.
-	 */
-	public double getWeight()
+	
+	public boolean isHidden()
 	{
-		return 1;
+		return false;
+	}
+	
+	public String hiddenKey()
+	{
+		return null;
 	}
 }

@@ -1,7 +1,7 @@
 package edu.brynmawr.cs.gradescope.run;
 
 import java.io.*;
-import java.lang.reflect.*;
+import java.net.*;
 import java.util.*;
 import java.util.stream.*;
 
@@ -16,106 +16,133 @@ import edu.brynmawr.cs.gradescope.test.*;
  */
 public class AutogradeSession
 {
-	private List<ClassToTest> classes;
+	private Map<String, JavaFile> files;
 	
-	private Map<ClassToTest, List<TestResult>> results;
+	private List<TestCase> tests;
+	private List<TestResult> results;
 	private List<String> errors;
 	
-	private boolean borked; // don't run tests if this is true
-
-	public AutogradeSession(ClassToTest... cs)
+	private ClassLoader classLoader;
+	
+	public AutogradeSession()
 	{
-		System.out.println("Richard's Java autograder, v3");
+		System.out.println("Richard's Java autograder, v4");
 				
-		classes = new ArrayList<>();
-		results = new HashMap<>();		
+		files = new HashMap<>();
+		tests = new ArrayList<>();
+		results = new ArrayList<>();		
 		errors = new ArrayList<>();
-		borked = false;
-		
-		addClassesToTest(cs);
 	}
 	
-	public void loadTestStringMethods(String... clses)
+	@FunctionalInterface
+	public interface AutogradeSessionDriver
 	{
-		for(String cls : clses)
+		void drive() throws BorkedException;
+	}
+	
+	public void withDriver(AutogradeSessionDriver d)
+	{
+		try
 		{
-			try
-			{
-				JavaFile jf = new JavaFile(cls);
-				Method testStringMethod = jf.getMethod("testString");
-				TestObject.addTestString(cls, testStringMethod);
-			}
-			catch (BorkedException e)
-			{
-				System.out.println(e);
-				reportError("There was an internal error in the autograder. Email Richard so he can look into it.");
-				borked = true;
-			}
-			catch (JavaFileNotFoundException e)
-			{
-				reportError("File not found for " + cls + ".java");
-				borked = true;
-			}
-			catch (NoSuchMethodException e)
-			{
-				reportError("Could not find testString method in " + cls + ".");
-				borked = true;
-			}
+			d.drive();
+			runAutograder();
+		}
+		catch (BorkedException e)
+		{
+			System.out.println(e);
+			reportError("There was an internal error in the autograder. Email Richard so he can look into it.");
+		}
+		finally
+		{
+			writeResults();
 		}
 	}
 	
-	public void addClassesToTest(ClassToTest... cs)
+	public JavaFile loadJavaFile(String name) throws BorkedException
 	{
-		classes.addAll(Arrays.asList(cs));
-		for(ClassToTest cls : classes)
+		if(files.containsKey(name))
 		{
-			results.put(cls, new ArrayList<>());
+			return files.get(name);
 		}
-	}
-	
-	public void runAutograder()
-	{
-		if(!borked)
+		else
 		{
+			JavaFile jf = new JavaFile(name);
 			try
 			{
-				for(ClassToTest cls : classes)
+				jf.find();
+			}
+			catch(JavaFileNotFoundException e)
+			{
+				reportError("File not found for " + name + ".java");
+			}
+			
+			try
+			{
+				jf.compile();
+			}
+			catch(JavaCompilationException e)
+			{
+				reportError(e.getErrorOutput());
+			}
+			
+			if(classLoader == null && jf.isFound())
+			{
+				URL rootURL;
+				try
 				{
-					JavaFile jf;
-					try
-					{
-						jf = new JavaFile(cls.getClassName());
-					}
-					catch(JavaFileNotFoundException e)
-					{
-						reportError("File not found for " + cls.getClassName() + ".java");
-						continue;
-					}
-					
-					try
-					{
-						jf.compile();
-					}
-					catch(JavaCompilationException e)
-					{
-						reportError(e.getErrorOutput());
-						continue;
-					}
-					
-					for(TestCase t : cls.getTests())
-					{
-						results.get(cls).addAll(t.runTest(jf));
-					}
+					rootURL = jf.getRoot().toURI().toURL();
 				}
+				catch (MalformedURLException e)
+				{
+					throw new BorkedException("Malformed URL during dynamic loading", e);
+				}
+				
+				classLoader = new URLClassLoader(new URL[] { rootURL });
 			}
-			catch(BorkedException e)
+			
+			jf.load(classLoader);
+			
+			files.put(name, jf);
+			
+			return jf;
+		}
+	}
+	
+	public JavaExceptionClass loadExceptionClass(String clsName)
+	  throws BorkedException
+	{
+		JavaFile jf = loadJavaFile(clsName);
+		
+		if(jf.isLoaded())
+		{
+			try
 			{
-				System.out.println(e);
-				reportError("There was an internal error in the autograder. Email Richard so he can look into it.");
+				Class<? extends Throwable> klass = jf.getLoadedClass().asSubclass(Throwable.class);
+				return new JavaExceptionClass(klass);
+			}
+			catch (ClassCastException e)
+			{
+				reportError(clsName + " is not an exception. It must be a subclass of Exception.");
+				return new JavaExceptionClass("class " + clsName + " is not a subclass of Exception.");
 			}
 		}
-		
-		writeResults();
+		else
+		{
+			return new JavaExceptionClass("class " + clsName + " did not compile.");
+		}
+	}
+	
+	public void addTests(TestCase... newTests)
+	{
+		tests.addAll(Arrays.asList(newTests));
+	}
+	
+	private void runAutograder() throws BorkedException
+	{
+		for(TestCase t : tests)
+		{
+			results.addAll(t.runTest());
+		}
 	}
 	
 	public void reportError(String msg)
@@ -123,66 +150,58 @@ public class AutogradeSession
 		errors.add(msg);
 	}
 	
-	private JSONArray testToJSON(ClassToTest prog)
+	private Optional<JSONObject> testToJSON(Map<String, JSONObject> hiddenResults, TestResult result)
 	{
-		JSONArray arr = new JSONArray();
-		
-		List<TestResult> testResults = results.get(prog);
-		double hiddenPoints = 0.0;
-		double maxHiddenPoints = 0.0;
-		int numHiddenTests = 0;
-		double totalWeight = testResults.stream()
-		                                .map(TestResult::getTest)
-		                                .mapToDouble(TestCase::getWeight)
-		                                .sum();
+		double maxScore = result.getMaxScore();
 
-		for(TestResult res : testResults)
+		double score;
+		if(result.success())
 		{
-			double maxScore = prog.getNumPoints() * res.getWeight() / totalWeight;
-			
-			JSONObject test = new JSONObject();
-						
-			double score;
-			if(res.success())
+			score = maxScore;
+		}
+		else
+		{
+			score = 0;
+		}
+
+		if(result.isHidden())
+		{	
+			String key = result.hiddenKey();
+			JSONObject hiddenObj;
+			if(hiddenResults.containsKey(key))
 			{
-				score = maxScore;
+				hiddenObj = hiddenResults.get(key);
 			}
 			else
 			{
-				score = 0;
+				hiddenObj = new JSONObject();
+				hiddenObj.put("max_score", 0.0);
+				hiddenObj.put("score", 0.0);
+				hiddenObj.put("visibility", "visible");
+				hiddenResults.put(key, hiddenObj);
 			}
+			
+			double prevMaxScore = hiddenObj.getDouble("max_score");
+			hiddenObj.put("max_score", prevMaxScore + maxScore);
+			
+			double prevScore = hiddenObj.getDouble("score");
+			hiddenObj.put("score", prevScore + score);
+			
+			return Optional.empty();
+		}
+		else
+		{
+			JSONObject test = new JSONObject();
+						
 			test.put("score", score);
 			test.put("max_score", maxScore);
 						
-			test.put("output", prog.getClassName() + ":\n" + res.render());
+			test.put("output", result.render());
 			
 			test.put("visibility", "visible");
-			
-			if(res.getTest().isHidden())
-			{
-				hiddenPoints += score;
-				maxHiddenPoints += maxScore;
-				numHiddenTests++;
-				System.out.println(test); // only I can see it
-			}
-			else
-			{
-				arr.put(test);
-			}
+
+			return Optional.of(test);
 		}
-		
-		if(numHiddenTests > 0)
-		{
-			JSONObject test = new JSONObject();
-			
-			test.put("score", hiddenPoints);
-			test.put("max_score", maxHiddenPoints);
-			test.put("output", "Results of " + numHiddenTests + " hidden tests for " + prog.getClassName());
-			test.put("visibility", "visible");
-			arr.put(test);
-		}
-		
-		return arr;
 	}
 	
 	private void writeResults()
@@ -201,8 +220,25 @@ public class AutogradeSession
 		obj.put("visibility", "visible");
 		obj.put("stdout_visibility", "hidden");
 		
-		Stream<JSONArray> tests = classes.stream().map(this::testToJSON);
-		JSONArray allTests = tests.collect(new JSONArrayConcatCollector());
+		JSONArray allTests = new JSONArray();
+		Map<String, JSONObject> hiddenResults = new HashMap<>();
+		for(TestResult result : results)
+		{
+			Optional<JSONObject> json = testToJSON(hiddenResults, result);
+			if(json.isPresent())
+			{
+				allTests.put(json.get());
+			}
+		}
+		
+		for(Map.Entry<String, JSONObject> entry : hiddenResults.entrySet())
+		{
+			String key = entry.getKey();
+			JSONObject value = entry.getValue();
+			
+			value.put("output", (key.length() == 0 ? "" : key + ": ") + "Results of hidden tests");
+			allTests.put(value);
+		}
 		
 		obj.put("tests", allTests);
 		

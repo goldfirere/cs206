@@ -4,9 +4,9 @@ public class TestTimeout extends TestResult
 {
 	private String testDoc;
 	
-	public TestTimeout(TestCase test, String d)
+	public TestTimeout(String d)
 	{
-		super(test, false);
+		super(false);
 		testDoc = d;
 	}
 	
