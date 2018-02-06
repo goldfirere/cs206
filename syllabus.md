@@ -77,13 +77,13 @@ represents my aims.
 |   |     |                     |                   |                   |                | * [zip5.csv]           |
 |   |     |                     |                   |                   |                | * [zip6.csv]           |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-| 5 |2/6  | * Inheritance       |                   | * Read KW 1.4-1.8,|                |                        |
+| 5 |2/6  | * Inheritance       |                   | * Read KW 1.4-1.8,|\$examples05\$  | * [Parsing exercise]   |
 |   |     | * Superclass        |                   |pp. 21-52          |                |                        |
 |   |     |constructors         |                   |                   |                |                        |
-|   |     | * Interfaces        |                   |                   |                |                        |
-|   |     | * Abstract data     |                   |                   |                |                        |
-|   |     |  types              |                   |                   |                |                        |
 |   |     | * Polymorphism      |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
@@ -91,15 +91,15 @@ represents my aims.
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
 |L3 |2/7  | * File I/O          |                   |                   |                |                        |
 |   |     | * Unit testing      |                   |                   |                |                        |
-|   |     | * Polymorphism      |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
 | 6 |2/8  | * Abstract classes  |                   | * Read KW 2.1-2.3,|                |                        |
-|   |     | * Casting           |                   |pp. 61-77          |                |                        |
-|   |     |                     |                   |                   |                |                        |
-|   |     |                     |                   |                   |                |                        |
-|   |     |                     |                   |                   |                |                        |
+|   |     | * Interfaces        |                   |pp. 61-77          |                |                        |
+|   |     | * Abstract data     |                   |                   |                |                        |
+|   |     |  types              |                   |                   |                |                        |
+|   |     | * Casting           |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
 | 7 |2/13 | * Java Collections  | * [Assignment 2]  | * Read KW 2.4, pp.|                |                        |
 |   |     | * `ArrayList`       |due                |77-87              |                |                        |
@@ -372,3 +372,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [zip4.csv]: hw02/zip4.csv
 [zip5.csv]: hw02/zip5.csv
 [zip6.csv]: hw02/zip6.csv
+[Parsing exercise]: 05/Parsing.pdf
