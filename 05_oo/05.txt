@@ -4,4 +4,6 @@ III. Inheritance
 
 throws (9:55-10:05)
 
-Parsing (
+Parsing (10:05-10:30)
+
+Inheritance (10:30-11:15)
