@@ -95,11 +95,12 @@ represents my aims.
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-| 6 |2/8  | * Abstract classes  |                   | * Read KW 2.1-2.3,|                |                        |
+| 6 |2/8  | * Abstract classes  |                   | * Read KW 2.1-2.3,|                | [Casting exercise]     |
 |   |     | * Interfaces        |                   |pp. 61-77          |                |                        |
-|   |     | * Abstract data     |                   |                   |                |                        |
-|   |     |  types              |                   |                   |                |                        |
 |   |     | * Casting           |                   |                   |                |                        |
+|   |     | * `instanceof`      |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
 | 7 |2/13 | * Java Collections  | * [Assignment 2]  | * Read KW 2.4, pp.|                |                        |
 |   |     | * `ArrayList`       |due                |77-87              |                |                        |
@@ -374,3 +375,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [zip6.csv]: hw02/zip6.csv
 [Parsing exercise]: 05/Parsing.pdf
 [Lab 3]: lab03/Lab3.pdf
+[Casting exercise]: 06/Casting.pdf
