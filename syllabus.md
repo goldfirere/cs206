@@ -89,8 +89,8 @@ represents my aims.
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-|L3 |2/7  | * File I/O          |                   |                   |                |                        |
-|   |     | * Unit testing      |                   |                   |                |                        |
+|L3 |2/7  | * Unit testing      |                   |                   |                | * [Lab 3]              |
+|   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
@@ -373,3 +373,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [zip5.csv]: hw02/zip5.csv
 [zip6.csv]: hw02/zip6.csv
 [Parsing exercise]: 05/Parsing.pdf
+[Lab 3]: lab03/Lab3.pdf
