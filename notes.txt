@@ -10,3 +10,9 @@ Focus more on correctness:
  - crisp coding: spelling is correct, indentation is clean
  - style as deduction, not part of main points
  - no no-ops
+
+
+-----------------------------------
+FOR NEXT TIME:
+
+- Less on OO. Maybe no inheritance, just interfaces. No hard casts.

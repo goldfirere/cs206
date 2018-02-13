@@ -95,17 +95,17 @@ represents my aims.
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-| 6 |2/8  | * Abstract classes  |                   | * Read KW 2.1-2.3,|                | [Casting exercise]     |
-|   |     | * Interfaces        |                   |pp. 61-77          |                |                        |
-|   |     | * Casting           |                   |                   |                |                        |
+| 6 |2/8  | * Polymorphism      |                   | * Read KW 2.1-2.3,|\$examples06\$  | [Casting exercise]     |
+|   |     | * Casting           |                   |pp. 61-77          |                |                        |
 |   |     | * `instanceof`      |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
+|   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-| 7 |2/13 | * Java Collections  | * [Assignment 2]  | * Read KW 2.4, pp.|                |                        |
-|   |     | * `ArrayList`       |due                |77-87              |                |                        |
-|   |     | * Generic           | * Assignment 3 out|                   |                |                        |
-|   |     |(parameterized) types|                   |                   |                |                        |
+| 7 |2/13 | * Abstract classes  | * [Assignment 2]  | * Read KW 2.4, pp.|\$examples07\$  | [ziplocs.csv]          |
+|   |     | * Casting           |due                |77-87              |                |                        |
+|   |     | * Interfaces        | * [Assignment 3]  |                   |                |                        |
+|   |     | * `Object`          |out                |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
@@ -114,10 +114,10 @@ represents my aims.
 |   |     | * Implementing      |                   |                   |                |                        |
 |   |     |`ArrayList`          |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-|8  |2/15 | * Asymptotic        |                   |                   |                |                        |
-|   |     |complexity           |                   |                   |                |                        |
-|   |     | * "Big $O$" notation|                   |                   |                |                        |
-|   |     |                     |                   |                   |                |                        |
+|8  |2/15 | * Java Collections  |                   |                   |                |                        |
+|   |     | * `ArrayList`       |                   |                   |                |                        |
+|   |     | * Generic           |                   |                   |                |                        |
+|   |     |(parameterized) types|                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
@@ -146,10 +146,10 @@ represents my aims.
 |   |     |                     |                   |to NetBeans's.)    |                |                        |
 |   |     |                     |                   |                   |                |                        |
 +---+-----+---------------------+-------------------+-------------------+----------------+------------------------+
-|11 |2/27 | * Linked lists      |* Assignment 3 due | * Read KW 2.6-2.7,|                |                        |
-|   |     |                     |* Assignment 4 out |pp. 99-112         |                |                        |
-|   |     |                     |                   |                   |                |                        |
-|   |     |                     |                   |                   |                |                        |
+|11 |2/27 | * Asymptotic        | * [Assignment 3]  | * Read KW 2.6-2.7,|                |                        |
+|   |     |complexity           |due                |pp. 99-112         |                |                        |
+|   |     | * "Big $O$" notation| * Assignment 4 out|                   |                |                        |
+|   |     | * Linked lists      |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
 |   |     |                     |                   |                   |                |                        |
@@ -376,3 +376,5 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Parsing exercise]: 05/Parsing.pdf
 [Lab 3]: lab03/Lab3.pdf
 [Casting exercise]: 06/Casting.pdf
+[Assignment 3]: hw03/ZipLoc.pdf
+[ziplocs.csv]: hw03/ziplocs.csv

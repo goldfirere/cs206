@@ -6,4 +6,12 @@ throws (9:55-10:05)
 
 Parsing (10:05-10:30)
 
+NO! STOP! DO NOT PROCEED!
+
+CS206 is the wrong place to do an in-depth dive into object orientation. We won't
+use it much in the rest of the semester, and it's hard. A much better place for
+this is CS245. Instead of doing the whole inheritance thing, better just to do
+interfaces, as these are used in the Collections framework. That is much simpler
+(no superconstructors, etc.) and relevant for the course.
+
 Inheritance (10:30-11:15)

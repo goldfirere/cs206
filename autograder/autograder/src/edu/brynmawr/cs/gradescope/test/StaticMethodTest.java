@@ -142,12 +142,17 @@ public class StaticMethodTest extends TestCase
 	
 	private static boolean matches(Object expected, Object actual)
 	{
+		if(actual == null)
+		{
+			return expected == null;
+		}
+		
 		if(expected instanceof String)
 		{
 			return expected.equals(actual.toString());
 		}
 		else if(expected.getClass().isArray())
-		{
+		{			
 			try
 			{
 				if(expected instanceof int[] && actual instanceof int[])
@@ -242,6 +247,11 @@ public class StaticMethodTest extends TestCase
 	
 	private static String render(Object o)
 	{
+		if(o == null)
+		{
+			return "null";
+		}
+		
 		if(o.getClass().isArray())
 		{
 			try

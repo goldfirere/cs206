@@ -1,0 +1,31 @@
+I. Questions?
+II. Abstract classes
+III. Interfaces
+IV. Casting & instanceof
+V. Object
+VI. Class invariants
+
+INDEX CARDS
+
+PLAYING CARDS
+
+Questions? (9:55-10:05)
+
+Abstract classes (10:05-10:15)
+ - can't construct
+ - abstract methods
+
+Interfaces (10:15-10:20)
+ - fully abstract
+ - Printable
+
+Casting & instanceof (10:20-10:45)
+
+Bits & Bobs (10:45-11:00)
+ - Object
+   - toString()
+   - equals()
+ - arrays inherit from Object
+
+Fraction (11:00-11:15)
+ - **INVARIANT**
