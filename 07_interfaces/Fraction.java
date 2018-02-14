@@ -143,4 +143,20 @@ public class Fraction
 		
 		return a;
 	}
+	
+	/** Returns whether or not this Fraction equals another
+	 *  @return true iff the other fraction equals this one
+	 */
+	@Override
+	public boolean equals(Object other)
+	{
+		if(other instanceof Fraction)
+		{
+			Fraction f = (Fraction)other;
+			
+			return numerator == f.getNumerator() &&
+				     denominator == f.getDenominator();
+		}
+	  return false;
+	}
 }
