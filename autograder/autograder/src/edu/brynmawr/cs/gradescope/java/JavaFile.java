@@ -22,9 +22,16 @@ public class JavaFile
 	private File path; // where is this file (absolute pathname)
 	private File root; // where the package structure is rooted
 	
-	private static URLClassLoader classLoader = null;
-	
 	private Class<?> klass; // the loaded class
+	
+	private enum FileState {
+		NAMED,
+		FOUND,
+		COMPILED,
+		LOADED
+	}
+	
+	private FileState state;
 	
 	public JavaFile(String name)
 	{
@@ -34,6 +41,8 @@ public class JavaFile
 		path = null;
 		root = null;
 		klass = null;
+		
+		state = FileState.NAMED;
 	}
 	
 	/** Find a new JavaFile for a given class. Always searches in
@@ -45,6 +54,11 @@ public class JavaFile
 	public void find() throws JavaFileNotFoundException,
 	                          BorkedException
 	{
+		if(state != FileState.NAMED)
+		{
+			throw new BorkedException("JavaFile " + className + " being found more than once.");
+		}
+		
 		try
 		{
 			File submissionDir = new File("/autograder/submission");
@@ -107,16 +121,17 @@ public class JavaFile
 		int numPackageComponents = pack.getNumComponents();
 		File directory = path.getParentFile();
 		root = new File(directory, String.join("/", Collections.nCopies(numPackageComponents, "..")));
+		state = FileState.FOUND;
 	}
 	
 	public boolean isFound()
 	{
-		return path != null;
+		return state != FileState.NAMED;
 	}
 
 	private Package getPackage(ConsIterator<String> fileLines)
 	  throws JavaParseException
-	{
+	{	
 		List<String> components = new ArrayList<String>();
 		String token;
 		do
@@ -305,6 +320,8 @@ public class JavaFile
 		{
 			throw new BorkedException("We got interruped while running `javac`.", e);
 		}
+		
+		state = FileState.COMPILED;
 	}
 	
 	/** Run the JavaFile as an application
@@ -316,6 +333,8 @@ public class JavaFile
 	 */
 	public String runProgram(String input) throws BorkedException, ProgramTooSlowException, NoMainException
 	{
+		// TODO: Check state.
+		
 		Process java;
 		try
 		{
@@ -453,6 +472,13 @@ public class JavaFile
 		catch (SecurityException e)
 		{
 			throw new BorkedException("Security exception", e); 
+		}
+		catch (NoClassDefFoundError e)
+		{
+			// this was spotted in the wild. I think it happened because there
+			// was an erroneous .java but still an (outdated) .class file around
+			// not really sure. But there's no harm in catching the error.
+			return new JavaMethod("There was a problem with " + className + ". Does the file have an error?");
 		}
 	}
 

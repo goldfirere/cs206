@@ -50,6 +50,7 @@ public class AutogradeSession
 		catch (BorkedException e)
 		{
 			System.out.println(e);
+			e.printStackTrace();
 			reportError("There was an internal error in the autograder. Email Richard so he can look into it.");
 		}
 		finally
@@ -238,6 +239,12 @@ public class AutogradeSession
 			
 			value.put("output", (key.length() == 0 ? "" : key + ": ") + "Results of hidden tests");
 			allTests.put(value);
+		}
+		
+		if(allTests.length() == 0)
+		{
+			// Gradescope falls over if there are no tests.
+			obj.put("score",0);
 		}
 		
 		obj.put("tests", allTests);

@@ -1,14 +1,10 @@
 package edu.brynmawr.cs.gradescope.java;
 
-public class JavaExceptionClass
+public class JavaExceptionClass extends D<Class<? extends Throwable>>
 {
-	private String errorMessage;
-	private Class<? extends Throwable> exception;
-	
 	public JavaExceptionClass(String error)
 	{
-		errorMessage = error;
-		exception = null;
+		super(false, error);
 	}
 	
 	public JavaExceptionClass(Class<? extends Throwable> exc)
