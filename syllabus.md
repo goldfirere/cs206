@@ -121,7 +121,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-| 9 |2/20 | * Exam review:      |                   |                   |                   | Practice Exam          |
+| 9 |2/20 | * Exam review:      |                   |                   |                   | [Practice Exam 1]      |
 |   |     |       - Object      |                   |                   |                   |                        |
 |   |     |orientation          |                   |                   |                   |                        |
 |   |     |       - Inheritance |                   |                   |                   |                        |
@@ -130,7 +130,7 @@ represents my aims.
 |   |     |       - Interfaces  |                   |                   |                   |                        |
 |   |     |       - `ArrayList` |                   |                   |                   |                        |
 |   |     |       - Exceptions  |                   |                   |                   |                        |
-|   |     |       - File I/O    |                   |                   |                   |                        |
+|   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
 |L5 |2/21 | * Exam review       |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -379,3 +379,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Assignment 3]: hw03/ZipLoc.pdf
 [ziplocs.csv]: hw03/ziplocs.csv
 [Lab 4]: lab04/Lab4.pdf
+[Practice Exam 1]: 09/PracticeExam1.pdf

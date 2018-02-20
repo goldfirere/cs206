@@ -5,6 +5,10 @@ public class InClass
 	{
 		Fraction f = new Fraction(3,4);
 	
-		System.out.println(f.getClass());
+		System.out.println(5);
+		System.out.println(f);
+		System.out.println("The fraction " + f);
+		
+		Fraction f2 = f.twice();
 	}
 }
