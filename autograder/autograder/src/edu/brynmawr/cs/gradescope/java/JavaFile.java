@@ -1,8 +1,6 @@
 package edu.brynmawr.cs.gradescope.java;
 
 import java.io.*;
-import java.lang.reflect.*;
-import java.net.*;
 import java.util.stream.*;
 
 import edu.brynmawr.cs.gradescope.util.*;
@@ -22,7 +20,7 @@ public class JavaFile
 	private File path; // where is this file (absolute pathname)
 	private File root; // where the package structure is rooted
 	
-	private Class<?> klass; // the loaded class
+	private JavaClass<Object> klass; // the loaded class
 	
 	private enum FileState {
 		NAMED,
@@ -304,7 +302,7 @@ public class JavaFile
 		try
 		{
 			Runtime rt = Runtime.getRuntime();
-			Process javac = rt.exec(new String[] { "javac", "-classpath", root.getAbsolutePath(), path.getAbsolutePath() });
+			Process javac = rt.exec(new String[] { "javac", "-classpath", "/autograder/source/junit/*:" + root.getAbsolutePath(), path.getAbsolutePath() });
 			int javacCode = javac.waitFor();
 			
 			if(javacCode != 0)
@@ -328,12 +326,13 @@ public class JavaFile
 	 * @param input The input to the program
 	 * @return Program output
 	 * @throws BorkedException Drastic system failure
-	 * @throws ProgramTooSlowException Program took more than 10 seconds to run
-	 * @throws NoMainException If the Java file has no main method
 	 */
-	public String runProgram(String input) throws BorkedException, ProgramTooSlowException, NoMainException
+	public D<String> runProgram(String input) throws BorkedException
 	{
-		// TODO: Check state.
+		if(state.compareTo(FileState.COMPILED) < 0)
+		{
+			return D.err("Compilation error prevents running " + className);
+		}
 		
 		Process java;
 		try
@@ -371,26 +370,27 @@ public class JavaFile
 		
 		if(!terminated)
 		{
-			throw new ProgramTooSlowException();
+			return D.err("Running " + className + " timed out after 10 seconds.");
 		}
 		
 		int exitCode = java.exitValue();
 		if(exitCode != 0)
 		{
 			String errors = new BufferedReader(new InputStreamReader(java.getErrorStream())).lines().collect(Collectors.joining("\n"));
-			throw new NoMainException(className, errors);
+			return D.err("There appears to be no `main` method in " + className + ":\n" + errors);
 		}
 		
 		// return output:
-		return new BufferedReader(new InputStreamReader(java.getInputStream())).lines().collect(Collectors.joining("\n"));
+		return D.of(new BufferedReader(new InputStreamReader(java.getInputStream())).lines().collect(Collectors.joining("\n")));
 	}
 	
 	/** Loads this class, making it available for method lookup.
 	 */
 	public void load(ClassLoader loader) throws BorkedException
 	{
-		if(!isFound())
+		if(state != FileState.COMPILED)
 		{
+			klass = JavaClass.err(className, className + " did not compile.");
 			return;
 		}
 		
@@ -398,7 +398,7 @@ public class JavaFile
 													pack.getPackage() + "." + className;
 		try
 		{
-			klass = loader.loadClass(fullyQualified);
+			klass = JavaClass.of(loader.loadClass(fullyQualified));
 		}
 		catch (ClassNotFoundException e)
 		{
@@ -453,35 +453,6 @@ public class JavaFile
 		}
 	}
 
-	public JavaMethod getMethod(String methodName, Class<?>... arguments) 
-			throws BorkedException
-	{
-		if(klass == null)
-		{
-			return new JavaMethod("Cannot run method " + methodName + ": Enclosing class " + className + " did not compile.");
-		}
-		
-		try
-		{
-			return new JavaMethod(klass.getMethod(methodName, arguments));
-		}
-		catch (NoSuchMethodException e)
-		{
-			return new JavaMethod("Cannot run method " + methodName + ": Method with correct argument types not found.");
-		}
-		catch (SecurityException e)
-		{
-			throw new BorkedException("Security exception", e); 
-		}
-		catch (NoClassDefFoundError e)
-		{
-			// this was spotted in the wild. I think it happened because there
-			// was an erroneous .java but still an (outdated) .class file around
-			// not really sure. But there's no harm in catching the error.
-			return new JavaMethod("There was a problem with " + className + ". Does the file have an error?");
-		}
-	}
-
 	public String getName()
 	{
 		return className;
@@ -489,10 +460,10 @@ public class JavaFile
 	
 	public boolean isLoaded()
 	{
-		return klass != null;
+		return state == FileState.LOADED;
 	}
 	
-	public Class<?> getLoadedClass()
+	public JavaClass<Object> getLoadedClass()
 	{
 		return klass;
 	}

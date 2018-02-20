@@ -8,11 +8,11 @@ public class TimedOperation
 {
 	private TimedOperation() {}
 	
-	public static <R> R timeOperation(Callable<R> c)
-	  throws BorkedException, ExecutionException, ProgramTooSlowException
+	public static <R> R timeOperation(BorkedSupplier<R> c)
+	  throws BorkedException, ProgramTooSlowException
 	{
 		final ExecutorService executor = Executors.newSingleThreadExecutor();
-		final Future<R> future = executor.submit(c);
+		final Future<R> future = executor.submit(() -> c.get());
 		executor.shutdown();
 		
 		try
@@ -26,6 +26,10 @@ public class TimedOperation
 		catch (TimeoutException e)
 		{
 			throw new ProgramTooSlowException();
+		}
+		catch (ExecutionException e)
+		{
+			throw new BorkedException("Other exception thrown during timed operation", e);
 		}
 	}	
 }

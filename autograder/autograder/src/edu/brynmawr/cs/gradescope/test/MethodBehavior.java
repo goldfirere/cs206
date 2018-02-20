@@ -6,22 +6,37 @@ import edu.brynmawr.cs.gradescope.java.*;
 
 public class MethodBehavior
 {
-	private final Object[] arguments;
-	private final Optional<Object> result;
-	private final Optional<JavaExceptionClass> exception;
+	private final D<Object>[] arguments;
+	private final MethodResult result;
 
-	public MethodBehavior(Object res, Object... args)
+	@SuppressWarnings("unchecked")
+	private static D<Object>[] dargs(Object[] args)
 	{
-		result = Optional.of(res);
-		arguments = args;
-		exception = Optional.empty();
+		return (D<Object>[])Arrays.stream(args).map(D::of).toArray(D<?>[]::new);
 	}
 	
-	public MethodBehavior(JavaExceptionClass exc, Object... args)
+	public MethodBehavior(Object res, Object... args)
 	{
-		exception = Optional.of(exc);
+		result = MethodResult.returned(res);
+		arguments = dargs(args);
+	}
+	
+	public MethodBehavior(JavaClass<Throwable> exc, Object... args)
+	{
+		result = MethodResult.exception(exc);
+		arguments = dargs(args);
+	}
+	
+	private MethodBehavior(MethodResult res, D<Object>[] args)
+	{
+		result = res;
 		arguments = args;
-		result = Optional.empty();
+	}
+	
+	@SafeVarargs
+	public static MethodBehavior d(D<Object> res, D<Object>... args)
+	{
+		return new MethodBehavior(MethodResult.d(res), args);
 	}
 	
 	@Deprecated
@@ -34,26 +49,18 @@ public class MethodBehavior
 	/**
 	 * @return the arguments
 	 */
-	public Object[] getArguments()
+	public D<Object>[] getArguments()
 	{
 		return arguments;
 	}
-
-	/**
-	 * @return the result
-	 */
-	public Optional<Object> getResult()
+	
+	public MethodResult getResult()
 	{
 		return result;
 	}
 
 	public boolean expectsResult()
 	{
-		return result.isPresent();
-	}
-
-	public Optional<JavaExceptionClass> getExpectedException()
-	{
-		return exception;
+		return !result.isException();
 	}
 }

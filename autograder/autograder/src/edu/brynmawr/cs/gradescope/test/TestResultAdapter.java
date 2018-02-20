@@ -6,7 +6,7 @@ public abstract class TestResultAdapter extends TestResult
 	
 	protected TestResultAdapter(TestResult res)
 	{
-		super(res.success());
+		super(res.getPercentage());
 		result = res;
 	}
 	

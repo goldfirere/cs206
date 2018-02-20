@@ -41,9 +41,10 @@ public class IntegrationTest extends TestCase
 		String inputOutputDoc = "Input:\n" + progInput +
         "Expected output:\n" + expectedOutput;
 		
-		try
+		D<String> doutput = program.runProgram(progInput);
+		if(doutput.isValid())
 		{
-			String output = program.runProgram(progInput);
+			String output = doutput.get();
 
 			String outputNoWS = Util.dropWhitespace(output);
 			String expectedNoWS = Util.dropWhitespace(expectedOutput);
@@ -55,15 +56,10 @@ public class IntegrationTest extends TestCase
 			{
 				return Collections.singletonList(new TestFailure(inputOutputDoc, output));
 			}
-
 		}
-		catch (ProgramTooSlowException e)
+		else
 		{
-			return Collections.singletonList(new TestTimeout(inputOutputDoc));
-		}	
-		catch (NoMainException e)
-		{
-			return Collections.singletonList(new TestError(e.getMessage()));
+			return Collections.singletonList(new TestError(doutput.getError()));
 		}
 	}
 }

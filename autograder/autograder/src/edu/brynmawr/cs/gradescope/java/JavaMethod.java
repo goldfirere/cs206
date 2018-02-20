@@ -1,35 +1,155 @@
 package edu.brynmawr.cs.gradescope.java;
 
 import java.lang.reflect.*;
+import java.util.*;
+import java.util.stream.*;
 
-public class JavaMethod
+import edu.brynmawr.cs.gradescope.test.*;
+import edu.brynmawr.cs.gradescope.util.*;
+
+public interface JavaMethod extends D<Method>
 {
-	private String errorMessage;
-	private Method meth;
+	String getMethodName();
+	String getClassName();
 	
-	public JavaMethod(String error)
+	D<MethodResult> invokeD(D<Object> obj, D<?>... args)
+	  throws BorkedException;
+	
+	D<MethodResult> invoke(Object obj, Object... args)
+	  throws BorkedException;
+	
+	public static JavaMethod of(Method m)
 	{
-		errorMessage = error;
-		meth = null;
+		return new JavaMethodValid(m);
 	}
 	
-	public JavaMethod(Method m)
+	public static JavaMethod err(String cls, String meth, String message)
 	{
-		meth = m;
+		return new JavaMethodError(cls, meth, message);
 	}
 	
-	public boolean isValid()
+	public default String makeMethodCallDoc(Object... args)
 	{
-		return meth != null;
+		List<String> argStrings = Arrays.stream(args).map(Util::render).collect(Collectors.toList());
+		return "Calling method " + getMethodName() + "(" + String.join(", ", argStrings) + ")\n";
+	}
+}
+
+class JavaMethodValid extends DValid<Method> implements JavaMethod
+{
+	JavaMethodValid(Method m)
+	{
+		super(m);
 	}
 	
-	public Method getMethod()
+	@Override
+	public String getMethodName()
 	{
-		return meth;
+		return get().getName();
 	}
 	
-	public String getError()
+	@Override
+	public String getClassName()
 	{
-		return errorMessage;
+		return get().getDeclaringClass().getName();
+	}
+	
+	@Override
+	public D<MethodResult> invokeD(D<Object> dobj, D<?>... dargs)
+	  throws BorkedException
+	{
+		if(dobj != null && !dobj.isValid())
+		{
+			return D.err(dobj.getError());
+		}
+		Optional<D<?>> maybeInvalid = Arrays.stream(dargs).filter(d -> !d.isValid()).findFirst();
+		if(maybeInvalid.isPresent())
+		{
+			return D.err(maybeInvalid.get().getError());
+		}
+		
+		// OK. everything is valid.
+		Object obj = dobj == null ? null : dobj.get();
+		Object[] args = new Object[dargs.length];
+		for(int i = 0; i < dargs.length; i++)
+		{
+			args[i] = dargs[i].get();
+		}
+		
+		return invoke(obj, args);
+	}
+	
+	@Override
+	public D<MethodResult> invoke(Object obj, Object... args)
+	  throws BorkedException
+	{	
+		String methodCallDoc = makeMethodCallDoc(args);
+
+		MethodResult result;
+		try
+		{
+			result = TimedOperation.timeOperation(() -> 
+			  {
+			  		try
+				  {
+				  		return MethodResult.returned(get().invoke(obj, args));
+				  }
+				  catch(IllegalAccessException e)
+				  {
+						throw new BorkedException("Method " + getMethodName() + " in " + getClassName() + " could not be called.", e);				  	
+				  }
+			  		catch(IllegalArgumentException e)
+			  		{
+						throw new BorkedException("Method " + getMethodName() + " in " + getClassName() + " could not be called without an object.", e);
+			  		}
+			  		catch(InvocationTargetException e)
+			  		{
+					  return MethodResult.exception(JavaClass.of(e.getCause().getClass()));
+			  		}
+			  });
+		}
+		catch (ProgramTooSlowException e)
+		{
+			return D.err(methodCallDoc + "took longer than 10 seconds to run.\n");
+		}
+
+		return D.of(result);
+	}
+}
+
+class JavaMethodError extends DError<Method> implements JavaMethod
+{
+	private String methName;
+	private String className;
+	JavaMethodError(String clsName, String mName, String err)
+	{
+		super(err);
+		className = clsName;
+		methName = mName;
+	}
+	
+	@Override
+	public String getMethodName()
+	{
+		return methName;
+	}
+	
+	@Override
+	public String getClassName()
+	{
+		return className;
+	}
+
+	@Override
+	public D<MethodResult> invokeD(D<Object> obj, D<?>... args)
+			throws BorkedException
+	{
+		return D.err(getError());
+	}
+	
+	@Override
+	public D<MethodResult> invoke(Object obj, Object... args)
+	{
+		return D.err(getError());
 	}
 }

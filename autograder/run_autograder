@@ -2,6 +2,6 @@
 
 cd /autograder/source
 
-java -cp auto.jar:. Test
+java -cp "/autograder/source/junit/*:/autograder/source/auto.jar:." Autograde
 
 

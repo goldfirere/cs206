@@ -2,11 +2,16 @@ package edu.brynmawr.cs.gradescope.test;
 
 public abstract class TestResult
 {
-	private final boolean success;
+	private final double percentage;
 	
 	public TestResult(boolean s)
 	{
-		success = s;
+		percentage = s ? 1 : 0;
+	}
+	
+	public TestResult(double p)
+	{
+		percentage = p;
 	}
 	
 	public abstract String render();
@@ -14,9 +19,9 @@ public abstract class TestResult
 	/**
 	 * @return the success
 	 */
-	public boolean success()
+	public double getPercentage()
 	{
-		return success;
+		return percentage;
 	}
 
 	public double getMaxScore()

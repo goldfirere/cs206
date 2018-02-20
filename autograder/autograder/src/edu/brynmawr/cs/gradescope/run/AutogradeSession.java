@@ -3,7 +3,6 @@ package edu.brynmawr.cs.gradescope.run;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.stream.*;
 
 import org.json.*;
 
@@ -26,7 +25,7 @@ public class AutogradeSession
 	
 	public AutogradeSession()
 	{
-		System.out.println("Richard's Java autograder, v4");
+		System.out.println("Richard's Java autograder, v5");
 				
 		files = new HashMap<>();
 		tests = new ArrayList<>();
@@ -109,30 +108,6 @@ public class AutogradeSession
 		}
 	}
 	
-	public JavaExceptionClass loadExceptionClass(String clsName)
-	  throws BorkedException
-	{
-		JavaFile jf = loadJavaFile(clsName);
-		
-		if(jf.isLoaded())
-		{
-			try
-			{
-				Class<? extends Throwable> klass = jf.getLoadedClass().asSubclass(Throwable.class);
-				return new JavaExceptionClass(klass);
-			}
-			catch (ClassCastException e)
-			{
-				reportError(clsName + " is not an exception. It must be a subclass of Exception.");
-				return new JavaExceptionClass("class " + clsName + " is not a subclass of Exception.");
-			}
-		}
-		else
-		{
-			return new JavaExceptionClass("class " + clsName + " did not compile.");
-		}
-	}
-	
 	public void addTests(TestCase... newTests)
 	{
 		tests.addAll(Arrays.asList(newTests));
@@ -154,16 +129,7 @@ public class AutogradeSession
 	private Optional<JSONObject> testToJSON(Map<String, JSONObject> hiddenResults, TestResult result)
 	{
 		double maxScore = result.getMaxScore();
-
-		double score;
-		if(result.success())
-		{
-			score = maxScore;
-		}
-		else
-		{
-			score = 0;
-		}
+		double score = maxScore * result.getPercentage();
 
 		if(result.isHidden())
 		{	
