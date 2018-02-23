@@ -92,7 +92,7 @@ class JavaMethodValid extends DValid<Method> implements JavaMethod
 			  {
 			  		try
 				  {
-				  		return MethodResult.returned(get().invoke(obj, args));
+				  		return new MethodResultActual(get().invoke(obj, args));
 				  }
 				  catch(IllegalAccessException e)
 				  {
@@ -104,7 +104,7 @@ class JavaMethodValid extends DValid<Method> implements JavaMethod
 			  		}
 			  		catch(InvocationTargetException e)
 			  		{
-					  return MethodResult.exception(JavaClass.of(e.getCause().getClass()));
+					  return new MethodResultException(JavaClass.of(e.getCause().getClass()));
 			  		}
 			  });
 		}

@@ -2,6 +2,7 @@ package edu.brynmawr.cs.gradescope.test;
 
 import java.util.*;
 
+import edu.brynmawr.cs.gradescope.expected.*;
 import edu.brynmawr.cs.gradescope.java.*;
 
 public class MethodBehavior
@@ -17,13 +18,19 @@ public class MethodBehavior
 	
 	public MethodBehavior(Object res, Object... args)
 	{
-		result = MethodResult.returned(res);
+		result = new MethodResultObject(res);
 		arguments = dargs(args);
 	}
 	
 	public MethodBehavior(JavaClass<Throwable> exc, Object... args)
 	{
-		result = MethodResult.exception(exc);
+		result = new MethodResultException(exc);
+		arguments = dargs(args);
+	}
+	
+	public MethodBehavior(Expected exp, Object... args)
+	{
+		result = new MethodResultExpected(exp);
 		arguments = dargs(args);
 	}
 	
@@ -36,7 +43,7 @@ public class MethodBehavior
 	@SafeVarargs
 	public static MethodBehavior d(D<Object> res, D<Object>... args)
 	{
-		return new MethodBehavior(MethodResult.d(res), args);
+		return new MethodBehavior(new MethodResultD(res), args);
 	}
 	
 	@Deprecated
@@ -57,10 +64,5 @@ public class MethodBehavior
 	public MethodResult getResult()
 	{
 		return result;
-	}
-
-	public boolean expectsResult()
-	{
-		return !result.isException();
 	}
 }

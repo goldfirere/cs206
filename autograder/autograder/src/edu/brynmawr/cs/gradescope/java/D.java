@@ -13,11 +13,11 @@ public interface D<T>
 	T get();
 	String getError();
 	
-	<R> D<R> f1(Function<T,R> f);
-	<A,R> D<R> f2(BiFunction<T,A,R> f, D<A> a);
-	void p1(Consumer<T> f);
-	<A> void p2(BiConsumer<T,A> f, D<A> a);
-	<A,B> void p3(TriConsumer<T,A,B> f, D<A> da, D<B> db);
+	<R> D<R> f1(FunctionB<T, R> f) throws BorkedException;
+	<A,R> D<R> f2(BiFunctionB<T,A,R> f, D<A> a) throws BorkedException;
+	void p1(ConsumerB<T> f) throws BorkedException;
+	<A> void p2(BiConsumerB<T,A> f, D<A> a) throws BorkedException;
+	<A,B> void p3(TriConsumerB<T,A,B> f, D<A> da, D<B> db) throws BorkedException;
 	
 	public static <T> D<T> of(T t)
 	{
@@ -77,31 +77,31 @@ class DValid<T> implements D<T>
 	}
 
 	@Override
-	public <R> D<R> f1(Function<T, R> f)
+	public <R> D<R> f1(FunctionB<T, R> f) throws BorkedException
 	{
 		return D.of(f.apply(t));
 	}
 
 	@Override
-	public <A, R> D<R> f2(BiFunction<T, A, R> f, D<A> da)
+	public <A, R> D<R> f2(BiFunctionB<T, A, R> f, D<A> da) throws BorkedException
 	{
 		return da.f1(a -> f.apply(t, a));
 	}
 
 	@Override
-	public void p1(Consumer<T> f)
+	public void p1(ConsumerB<T> f) throws BorkedException
 	{
 		f.accept(t);
 	}
 
 	@Override
-	public <A> void p2(BiConsumer<T, A> f, D<A> da)
+	public <A> void p2(BiConsumerB<T, A> f, D<A> da) throws BorkedException
 	{
 		da.p1(a -> f.accept(t, a));
 	}
 
 	@Override
-	public <A,B> void p3(TriConsumer<T, A, B> f, D<A> da, D<B> db)
+	public <A,B> void p3(TriConsumerB<T, A, B> f, D<A> da, D<B> db) throws BorkedException
 	{
 		da.p1(a -> db.p1(b -> f.accept(t, a, b)));
 	}
@@ -153,31 +153,31 @@ class DError<T> implements D<T>
 	}
 
 	@Override
-	public <R> D<R> f1(Function<T, R> f)
+	public <R> D<R> f1(FunctionB<T, R> f) throws BorkedException
 	{
 		return D.err(errorMessage);
 	}
 
 	@Override
-	public <A, R> D<R> f2(BiFunction<T, A, R> f, D<A> da)
+	public <A, R> D<R> f2(BiFunctionB<T, A, R> f, D<A> da) throws BorkedException
 	{
 		return D.err(errorMessage);
 	}
 
 	@Override
-	public void p1(Consumer<T> f)
+	public void p1(ConsumerB<T> f) throws BorkedException
 	{
 		// do nothing
 	}
 
 	@Override
-	public <A> void p2(BiConsumer<T, A> f, D<A> a)
+	public <A> void p2(BiConsumerB<T, A> f, D<A> a) throws BorkedException
 	{
 		// do nothing
 	}
 	
 	@Override
-	public <A,B> void p3(TriConsumer<T, A, B> f, D<A> da, D<B> db)
+	public <A,B> void p3(TriConsumerB<T, A, B> f, D<A> da, D<B> db) throws BorkedException
 	{
 		//do nothing
 	}

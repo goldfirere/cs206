@@ -79,7 +79,7 @@ class JavaConstructorValid<T> extends DValid<Constructor<? extends T>> implement
 			  {
 			  		try
 				  {
-				  		return D.of(MethodResult.returned(get().newInstance(args)));
+				  		return D.of(new MethodResultActual(get().newInstance(args)));
 				  }
 				  catch(IllegalAccessException e)
 				  {
@@ -91,7 +91,7 @@ class JavaConstructorValid<T> extends DValid<Constructor<? extends T>> implement
 			  		}
 			  		catch(InvocationTargetException e)
 			  		{
-					  return D.of(MethodResult.exception(JavaClass.of(e.getCause().getClass())));
+					  return D.of(new MethodResultException(JavaClass.of(e.getCause().getClass())));
 			  		}
 			  		catch(InstantiationException e)
 			  		{
