@@ -102,9 +102,9 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-| 7 |2/13 | * Abstract classes  | * [Assignment 2]  | * Read KW 2.4, pp.|\$examples07\$     | [ziplocs.csv]          |
-|   |     | * Casting           |due                |77-87              |                   |                        |
-|   |     | * Interfaces        | * [Assignment 3]  |                   |                   |                        |
+| 7 |2/13 | * Abstract classes  | * [Assignment 2]  | * Read KW 2.4, pp.|\$examples07\$     | * [ziplocs.csv]        |
+|   |     | * Casting           |due                |77-87              |                   | * [shortzip.csv]       |
+|   |     | * Interfaces        | * [Assignment 3]  |                   |                   | * [shortlocs.csv]      |
 |   |     | * `Object`          |out                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -380,3 +380,5 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [ziplocs.csv]: hw03/ziplocs.csv
 [Lab 4]: lab04/Lab4.pdf
 [Practice Exam 1]: 09/PracticeExam1.pdf
+[shortzip.csv]: hw03/shortzip.csv
+[shortlocs.csv]: hw03/shortlocs.csv

@@ -3,7 +3,7 @@
  * Desc: A simple Fraction class
  */
 
-public class Fraction
+public class Fraction implements Printable
 {
 	// INVARIANT: The numerator and denominator have no common divisors.
 	// INVARIANT: The denominator is always a positive number.
@@ -158,5 +158,12 @@ public class Fraction
 				     denominator == f.getDenominator();
 		}
 	  return false;
+	}
+
+	// Prints out the contents of this object
+	@Override
+	public void print()
+	{
+		System.out.println(numerator + "/" + denominator);
 	}
 }

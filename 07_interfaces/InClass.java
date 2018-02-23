@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class InClass
 {
@@ -9,6 +10,20 @@ public class InClass
 		System.out.println(f);
 		System.out.println("The fraction " + f);
 		
-		Fraction f2 = f.twice();
+		ArrayList<Printable> printers = new ArrayList<>();
+		
+		printers.add(new Fraction(5, 7));
+		printers.add(new Fraction(10, 2));
+		printers.add(new Counter());
+		
+		Counter c2 = new Counter();
+		c2.increment();
+		c2.increment();
+		printers.add(c2);
+		
+		for(int i = 0; i < printers.size(); i++)
+		{
+			printers.get(i).print();
+		}
 	}
 }
