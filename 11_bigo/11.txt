@@ -1,0 +1,17 @@
+I. ArrayList implementation
+II. Big O notation
+III. Linked Lists
+
+ArrayList implementation (9:55-10:10)
+
+Big O (10:10-10:25)
+ - T(n) is O(f(n)) if ∃ n₀ > 0, ∃ c > 0, ∀ n > n₀, c·f(n) ≥ T(n)
+ - growth of algorithms
+
+**EXERCISE**
+What are the Big-O values of the algorithms in the array list?
+
+Linked Lists (10:35-11:00)
+
+**EXERCISE**
+Write the remove method
