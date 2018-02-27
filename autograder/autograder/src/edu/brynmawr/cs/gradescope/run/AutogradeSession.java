@@ -25,7 +25,7 @@ public class AutogradeSession
 	
 	public AutogradeSession()
 	{
-		System.out.println("Richard's Java autograder, v5");
+		System.out.println("Richard's Java autograder, v6");
 				
 		files = new HashMap<>();
 		tests = new ArrayList<>();

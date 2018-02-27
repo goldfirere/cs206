@@ -18,7 +18,7 @@ public abstract class MethodResultReturn implements MethodResult
 			{
 				if(doesMatch.get() > 0)
 				{
-					return new TestSuccess(testDoc);
+					return new TestPartialSuccess(doesMatch.get(), testDoc + "\n" + getExtra());
 				}
 				else
 				{
@@ -37,4 +37,8 @@ public abstract class MethodResultReturn implements MethodResult
 	}
 	
 	protected abstract D<Double> matches(Object other) throws BorkedException;
+	protected String getExtra()
+	{
+		return "";
+	}
 }

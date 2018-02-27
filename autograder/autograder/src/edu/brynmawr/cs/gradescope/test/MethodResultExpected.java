@@ -19,7 +19,7 @@ public class MethodResultExpected extends MethodResultReturn
 	}
 
 	@Override
-	protected D<Double> matches(Object other)
+	protected D<Double> matches(Object other) throws BorkedException
 	{
 		return expected.matches(other);
 	}
@@ -29,5 +29,11 @@ public class MethodResultExpected extends MethodResultReturn
     throws BorkedException
   {
     throw new BorkedException("Trying to convert a MethodResultExpected to a D");
+  }
+  
+  @Override
+  protected String getExtra()
+  {
+  		return expected.getExtra();
   }
 }
