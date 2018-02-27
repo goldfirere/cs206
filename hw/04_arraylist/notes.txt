@@ -1,3 +1,4 @@
-Write a BMCArrayList class, with iterator functionality.
-ListIterator too? Maybe. Try it.
-Re-implement hw3 in with the new list. This part should be easy.
+Write a BMCArrayList class, with iterator functionality.  <-- adapt existing. add Iterator.
+ListIterator too? Maybe. Try it.  <-- NO.
+Re-implement hw3 in with the new list. This part should be easy. <-- yes
+See also DK's hw4. Do that, aggregating multiple zip codes' populations into one town.

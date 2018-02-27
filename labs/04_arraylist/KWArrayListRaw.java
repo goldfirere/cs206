@@ -6,15 +6,15 @@
 import java.util.*;
 
 /** This class implements some of the methods of the Java
- *  ArrayList class.
+ *  ArrayList class, but using Objects instead of a generic type parameter
  */
-public class KWArrayListRaw<E>
+public class KWArrayListRaw
 {
 	/** The default initial capacity */
 	private static final int INITIAL_CAPACITY = 10;
 	
 	/** The underlying data array */
-	private E[] theData;
+	private Object[] theData;
 	
 	/** The current size */
 	private int size = 0;
@@ -24,18 +24,17 @@ public class KWArrayListRaw<E>
 	
 	/** Creates a list with an initial capacity of INITIAL_CAPACITY
 	 */
-	@SuppressWarnings("unchecked")
 	public KWArrayListRaw()
 	{
 		capacity = INITIAL_CAPACITY;	
-		theData = (E[]) new Object[capacity];
+		theData = new Object[capacity];
 	}
 	
 	/** Adds a new element to this list.
 	 *  @param anEntry The new element
 	 *  @return true, always
 	 */
-	public boolean add(E anEntry)
+	public boolean add(Object anEntry)
 	{
 		if(size == capacity)
 		{
@@ -53,7 +52,7 @@ public class KWArrayListRaw<E>
 	 *  @param anEntry The new value to add
 	 *  @throws IndexOutOfBoundsException if the index is out of bounds
 	 */
-	public void add(int index, E anEntry)
+	public void add(int index, Object anEntry)
 	{
 		if(index < 0 || index > size)
 		{
@@ -81,7 +80,7 @@ public class KWArrayListRaw<E>
 	 *  @return The item at that index
 	 *  @throws IndexOutOfBoundsException if the index is < 0 or >= size
 	 */
-	public E get(int index)
+	public Object get(int index)
 	{
 		if(index < 0 || index >= size)
 		{
@@ -97,14 +96,14 @@ public class KWArrayListRaw<E>
 	 *  @return The old value at that index
 	 *  @throws IndexOutOfBoundsException if the index < 0 or >= size
 	 */
-	public E set(int index, E newValue)
+	public Object set(int index, Object newValue)
 	{
 		if(index < 0 || index >= size)
 		{
 			throw new IndexOutOfBoundsException("" + index);
 		}
 		
-		E oldValue = theData[index];
+		Object oldValue = theData[index];
 		theData[index] = newValue;
 		return oldValue;
 	}
@@ -115,14 +114,14 @@ public class KWArrayListRaw<E>
 	 *  @return The element removed
 	 *  @throws IndexOutOfBoundsException if the index < 0 or >= size
 	 */
-	public E remove(int index)
+	public Object remove(int index)
 	{
 		if(index < 0 || index >= size)
 		{
 			throw new IndexOutOfBoundsException("" + index);
 		}
 		
-		E returnValue = theData[index];
+		Object returnValue = theData[index];
 		for(int i = index + 1; i < size; i++)
 		{
 			theData[i - 1] = theData[i];

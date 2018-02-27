@@ -6,15 +6,15 @@
 import java.util.*;
 
 /** This class implements some of the methods of the Java
- *  ArrayList class, but using Objects instead of a generic type parameter
+ *  ArrayList class.
  */
-public class KWArrayList
+public class KWArrayList<E>
 {
 	/** The default initial capacity */
 	private static final int INITIAL_CAPACITY = 10;
 	
 	/** The underlying data array */
-	private Object[] theData;
+	private E[] theData;
 	
 	/** The current size */
 	private int size = 0;
@@ -24,17 +24,18 @@ public class KWArrayList
 	
 	/** Creates a list with an initial capacity of INITIAL_CAPACITY
 	 */
+	@SuppressWarnings("unchecked")
 	public KWArrayList()
 	{
 		capacity = INITIAL_CAPACITY;	
-		theData = new Object[capacity];
+		theData = (E[]) new Object[capacity];
 	}
 	
 	/** Adds a new element to this list.
 	 *  @param anEntry The new element
 	 *  @return true, always
 	 */
-	public boolean add(Object anEntry)
+	public boolean add(E anEntry)
 	{
 		if(size == capacity)
 		{
@@ -52,7 +53,7 @@ public class KWArrayList
 	 *  @param anEntry The new value to add
 	 *  @throws IndexOutOfBoundsException if the index is out of bounds
 	 */
-	public void add(int index, Object anEntry)
+	public void add(int index, E anEntry)
 	{
 		if(index < 0 || index > size)
 		{
@@ -80,7 +81,7 @@ public class KWArrayList
 	 *  @return The item at that index
 	 *  @throws IndexOutOfBoundsException if the index is < 0 or >= size
 	 */
-	public Object get(int index)
+	public E get(int index)
 	{
 		if(index < 0 || index >= size)
 		{
@@ -96,14 +97,14 @@ public class KWArrayList
 	 *  @return The old value at that index
 	 *  @throws IndexOutOfBoundsException if the index < 0 or >= size
 	 */
-	public Object set(int index, Object newValue)
+	public E set(int index, E newValue)
 	{
 		if(index < 0 || index >= size)
 		{
 			throw new IndexOutOfBoundsException("" + index);
 		}
 		
-		Object oldValue = theData[index];
+		E oldValue = theData[index];
 		theData[index] = newValue;
 		return oldValue;
 	}
@@ -114,14 +115,14 @@ public class KWArrayList
 	 *  @return The element removed
 	 *  @throws IndexOutOfBoundsException if the index < 0 or >= size
 	 */
-	public Object remove(int index)
+	public E remove(int index)
 	{
 		if(index < 0 || index >= size)
 		{
 			throw new IndexOutOfBoundsException("" + index);
 		}
 		
-		Object returnValue = theData[index];
+		E returnValue = theData[index];
 		for(int i = index + 1; i < size; i++)
 		{
 			theData[i - 1] = theData[i];
