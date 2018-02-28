@@ -1,6 +1,7 @@
 package edu.brynmawr.cs.gradescope.test;
 
 import edu.brynmawr.cs.gradescope.java.*;
+import edu.brynmawr.cs.gradescope.util.*;
 
 public abstract class MethodResultReturn implements MethodResult
 {	
@@ -22,7 +23,7 @@ public abstract class MethodResultReturn implements MethodResult
 				}
 				else
 				{
-					return new TestFailure(testDoc, render());
+					return new TestFailure(testDoc, Util.render(actual.getActual()));
 				}
 			}
 			else
