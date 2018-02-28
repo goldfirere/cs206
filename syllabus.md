@@ -157,7 +157,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L6 |2/28 | * Eclipse debugger  |                   |                   |                   |                        |
+|L6 |2/28 | * Eclipse debugger  |                   |                   |\$lab_examples06\$ | [Lab 6]                |
 |   |     | * Linked lists      |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -382,3 +382,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Practice Exam 1]: 09/PracticeExam1.pdf
 [shortzip.csv]: hw03/shortzip.csv
 [shortlocs.csv]: hw03/shortlocs.csv
+[Lab 6]: lab06/Lab06.pdf

@@ -8,7 +8,7 @@ import java.util.*;
 /** This class implements some of the methods of the Java
  *  ArrayList class.
  */
-public class KWArrayList<E>
+public class KWArrayListBuggy<E>
 {
 	/** The default initial capacity */
 	private static final int INITIAL_CAPACITY = 10;
@@ -28,7 +28,7 @@ public class KWArrayList<E>
 	/** Creates a list with an initial capacity of INITIAL_CAPACITY
 	 */
 	@SuppressWarnings("unchecked")
-	public KWArrayList()
+	public KWArrayListBuggy()
 	{
 		capacity = INITIAL_CAPACITY;	
 		theData = (E[]) new Object[capacity];
@@ -144,9 +144,13 @@ public class KWArrayList<E>
 	/** Doubles the capacity of this list, preserving the elements
 	 *  Precondition: size == capacity
 	 */
+	@SuppressWarnings("unchecked")
 	private void reallocate()
 	{
-		capacity = 2 * capacity;
-		theData = Arrays.copyOf(theData, capacity);
+		E[] newData = (E[]) new Object[capacity * 2];
+		for(int i = 0; i < newData.length; i++)
+		{
+			theData[i] = newData[i];
+		}
 	}
 }
