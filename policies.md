@@ -144,8 +144,7 @@ Group work policy
 Working with a partner
 ----------------------
 
-You are allowed to work with up to one partner on all assignments, with one
-caveat: no more than 2 assignments may be completed with the same partner.
+You are allowed to work with up to one partner on all assignments.
 
 If you work with a partner:
 
