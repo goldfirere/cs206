@@ -148,8 +148,8 @@ represents my aims.
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
 |11 |2/27 | * Asymptotic        |                   | * Read KW 2.6-2.7,|\$examples11\$     |                        |
 |   |     |complexity           |                   |pp. 99-112         |                   |                        |
-|   |     | * "Big $O$" notation|                   |                   |                   |                        |
 |   |     | * Linked lists      |                   |                   |                   |                        |
+|   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -162,15 +162,15 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|12 |3/1  | * Doubly linked     | * [Assignment 3]  | * Read KW 2.8-2.9,|                   |                        |
+|12 |3/1  | * Doubly linked     | * [Assignment 3]  | * Read KW 2.8-2.9,|                   | [Reading questions]    |
 |   |     |lists                |due                |pp. 112-124        |                   |                        |
-|   |     | * Circular linked   | * Assignment 4 out|                   |                   |                        |
-|   |     |lists                |                   |                   |                   |                        |
-|   |     | * Iterators         |                   |                   |                   |                        |
+|   |     | * "Big $O$" notation| * Assignment 4 out|                   |                   |                        |
+|   |     |                     |                   |                   |                   |                        |
+|   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|13 |3/6  | * Implementing an   |                   | * Read KW 3.1-3.2,|                   |                        |
-|   |     |iterator             |                   |pp. 149-161        |                   |                        |
-|   |     |                     |                   | * Read about      |                   |                        |
+|13 |3/6  | * Iterators         |                   | * Read KW 3.1-3.2,|                   |                        |
+|   |     | * Implementing an   |                   |pp. 149-161        |                   |                        |
+|   |     |iterator             |                   | * Read about      |                   |                        |
 |   |     |                     |                   |[Reverse Polish    |                   |                        |
 |   |     |                     |                   |notation] (up to,  |                   |                        |
 |   |     |                     |                   |but not including, |                   |                        |
@@ -383,3 +383,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [shortzip.csv]: hw03/shortzip.csv
 [shortlocs.csv]: hw03/shortlocs.csv
 [Lab 6]: lab06/Lab06.pdf
+[Reading questions]: 12/Reading.pdf

@@ -16,3 +16,39 @@ Focus more on correctness:
 FOR NEXT TIME:
 
 - Less on OO. Maybe no inheritance, just interfaces. No hard casts.
+
+
+------------
+DIFFICULTY
+
+11a "not part of any of these classes" confusing
+
+memory diagrams: specific shape is confusing
+
+disconnection between class and assignments
+ - interacting with code only in homeworks
+
+trouble following logic
+ - could talk more about pseudocode in class
+
+coding style is different
+ - all in the console
+ - classes are abstract
+
+assignment 1 was easier because there weren't classes
+
+examples aren't applicable enough to the assignments
+
+objective of assts 2 and 3 is more abstract
+
+many layers of difficulty in assignments
+
+reading is hard
+
+assignments don't teach "writing" code
+
+less Eclipse; more work on paper
+
+MORE WORKSHEETS!
+
+challenge exercises

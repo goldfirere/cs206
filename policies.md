@@ -131,7 +131,7 @@ assignment. You will submit assignments via
 [Gradescope], as practiced during [Lab 1](lab01/lab.html).
 
 Late assignments will lose 20% of their points for every day
-late (or portion thereof). Each student gets 3 free *late days* for the semester.
+late (or portion thereof). Each student gets 6 free *late days* for the semester.
 This means that the first three days (or portion thereof) that an assignment
 is late will not lead to a penalty. These late days are intended to account for
 unexpected bugs, minor illnesses, planned travel, etc. I will grant further
@@ -170,14 +170,20 @@ All the code you submit must be written by you alone.
 </div>
 
 This means that, while it's a great idea to discuss general algorithms or
-approaches with your classmates, **never share code**, and **never submit code
-you found online**. Violators of this policy will be asked to report
-themselves to the [Honor Board](http://sga.blogs.brynmawr.edu/honor-board/).
+approaches with your classmates, you should make sure that the code you
+submit is yours and yours alone. This means that it may be OK to help a
+friend debug their code or to look at someone else's approach for inspiration,
+but **your own writeup must be made independently,** without the other code
+available for consultation.
 
-If you use a website or other resource to help in your work, **you must cite**
-that resource. A comment in your code with a link is sufficient; I am not
-particular about citation format. It is assumed that you can use any resource
-posted on this website on any assignment; all other resources must be cited.
+If your work has been influenced by the work of another student, **you must
+cite that student** in your submission. (This citation can take the form
+of a comment in that area of your code; there is no prescribed citation
+format.)
+
+Submitting code from any source other than your own brain without citation
+is a violation of Bryn Mawr's Honor Code. In particular, **never submit code
+you have found online**.
 
 If you have a question, post on [Piazza].
 
