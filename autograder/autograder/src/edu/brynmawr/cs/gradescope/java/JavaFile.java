@@ -386,7 +386,7 @@ public class JavaFile
 	
 	/** Loads this class, making it available for method lookup.
 	 */
-	public void load(ClassLoader loader) throws BorkedException
+	public void load(ClassLoader loader)
 	{
 		if(state != FileState.COMPILED)
 		{
@@ -402,7 +402,7 @@ public class JavaFile
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new BorkedException("Can't find class " + className + " during loading", e);
+			klass = JavaClass.err(className, "Could not find class " + className + " after compiling.\nIs the name of the class the same as the name of the file? It should be.");
 		}
 	}
 	
