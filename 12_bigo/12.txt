@@ -1,0 +1,20 @@
+I. Linked Lists
+   a. Single
+   b. Double
+II. Reading Documentation
+III. Big O
+
+Linked Lists (9:55-10:30)
+ - more diagrams
+ - continuation of diagrams
+ - write the **remove** method, on paper
+
+Double linked lists
+ - briefly, on board
+
+Reading documentation (10:30-10:55)
+ example: String.indexOf
+
+ task: sheet
+
+Big O (10:55-11:15)
