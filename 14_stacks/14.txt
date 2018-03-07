@@ -1,0 +1,13 @@
+I. Iterators?
+II. Stacks
+III. Postfix Calculator
+
+Iterators? (9:55-10:05)
+
+Stacks (10:05-10:20)
+ - theory
+ - implementing StackInt
+
+Postfix Calculator (10:20-11:15)
+ - theory
+ - student implementations on paper
