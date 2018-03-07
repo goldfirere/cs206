@@ -176,7 +176,7 @@ represents my aims.
 |   |     |                     |                   |but not including, |                   |                        |
 |   |     |                     |                   |"Implementations") |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L7 |3/7  | * A linked list with|                   |                   |                   |                        |
+|L7 |3/7  | * A linked list with|                   |                   |                   |[Lab 7]                 |
 |   |     |iterators            |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -385,3 +385,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Lab 6]: lab06/Lab06.pdf
 [Reading questions]: 12/Reading.pdf
 [Assignment 4]: hw04/ZipIterator.pdf
+[Lab 7]: lab07/Lab7.pdf
