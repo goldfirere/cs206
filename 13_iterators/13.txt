@@ -1,0 +1,16 @@
+I. Big O
+II. Reading Documentation
+III. Iterators
+
+Big O (9:55-10:25)
+ - T(n) is O(f(n)) if ∃ n₀ > 0, ∃ c > 0, ∀ n > n₀, c·f(n) ≥ T(n)
+ - growth of algorithms
+
+Reading documentation (10:25-10:45)
+ - worksheet
+
+Iterators (10:45-11:15)
+ - work from documentation
+ - Iterable interface
+ - enhanced for loop
+ - talk about how to implement

@@ -164,11 +164,11 @@ represents my aims.
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
 |12 |3/1  | * Doubly linked     | * [Assignment 3]  | * Read KW 2.8-2.9,|                   | [Reading questions]    |
 |   |     |lists                |due                |pp. 112-124        |                   |                        |
-|   |     | * "Big $O$" notation| * Assignment 4 out|                   |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
+|   |     | * "Big $O$" notation| * [Assignment 4]  |                   |                   |                        |
+|   |     |                     |out                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|13 |3/6  | * Iterators         |                   | * Read KW 3.1-3.2,|                   |                        |
+|13 |3/6  | * Iterators         |                   | * Read KW 3.1-3.2,|\$examples13\$     |                        |
 |   |     | * Implementing an   |                   |pp. 149-161        |                   |                        |
 |   |     |iterator             |                   | * Read about      |                   |                        |
 |   |     |                     |                   |[Reverse Polish    |                   |                        |
@@ -224,9 +224,9 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|15 |3/22 | * Analyzing stack   |* Assignment 4 due | * Read KW 4.3-4.4,|                   |                        |
-|   |     |implementations      |* Assignment 5 out |pp. 206-220        |                   |                        |
-|   |     | * Queues            |                   | * (optional) Read |                   |                        |
+|15 |3/22 | * Analyzing stack   | * [Assignment 4]  | * Read KW 4.3-4.4,|                   |                        |
+|   |     |implementations      |due                |pp. 206-220        |                   |                        |
+|   |     | * Queues            | * Assignment 5 out| * (optional) Read |                   |                        |
 |   |     |                     |                   |KW 4.5, p. 221-237 |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -384,3 +384,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [shortlocs.csv]: hw03/shortlocs.csv
 [Lab 6]: lab06/Lab06.pdf
 [Reading questions]: 12/Reading.pdf
+[Assignment 4]: hw04/ZipIterator.pdf
