@@ -2,8 +2,11 @@
 //"Data Structures: Abstraction and Design Using Java", 2nd Edition
 //Pub. John Wiley & Sons, Inc., 2010.
 //with minor modifications by Richard Eisenberg
+//This version implements Iterable and StackInt
 
-public class SingleLinkedList<E>
+import java.util.*;
+
+public class SingleLinkedList<E> implements Iterable<E>, StackInt<E>
 {
 	private static class Node<E>
 	{
@@ -27,6 +30,35 @@ public class SingleLinkedList<E>
 		{
 			data = dataItem;
 			next = nodeRef;
+		}
+	}
+	
+	private static class SLLIterator<E> implements Iterator<E>
+	{
+		private Node<E> node;
+		
+		private SLLIterator(SingleLinkedList<E> list)
+		{
+			node = list.head;
+		}
+		
+		@Override
+		public boolean hasNext()
+		{
+			return (node != null);
+		}
+		
+		@Override
+		public E next()
+		{
+			if(node == null)
+			{
+				throw new NoSuchElementException();
+			}
+			
+			E data = node.data;
+			node = node.next;
+			return data;
 		}
 	}
 
@@ -214,5 +246,53 @@ public class SingleLinkedList<E>
 			node = node.next;
 		}
 		return node;
+	}
+
+	/**********************************************************
+	 * Stack methods
+	 **********************************************************/
+	
+	@Override
+	public E push(E obj)
+	{
+		addFirst(obj);
+		return obj;
+	}
+
+	@Override
+	public E peek()
+	{
+		if(size == 0)
+		{
+			throw new EmptyStackException();
+		}
+		
+		return get(0);
+	}
+
+	@Override
+	public E pop()
+	{
+		if(size == 0)
+		{
+			throw new EmptyStackException();
+		}
+		
+		return removeFirst();
+	}
+
+	@Override
+	public boolean empty()
+	{
+		return size == 0;
+	}
+	
+	/******************************************************
+	 * Iterator methods
+	 ******************************************************/
+	@Override
+	public Iterator<E> iterator()
+	{
+		return new SLLIterator<>(this);
 	}
 }

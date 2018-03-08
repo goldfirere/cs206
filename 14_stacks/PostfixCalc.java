@@ -44,7 +44,7 @@ public class PostfixCalc
 	public static int eval(String[] tokens)
 	  throws NumberFormatException, EmptyStackException, LeftoverNumbersException
 	{
-		StackInt<Integer> stack = new SingleLinkedListStack<>();
+		StackInt<Integer> stack = new SingleLinkedList<>();
 		
 		for(String token : tokens)
 		{
