@@ -176,7 +176,7 @@ represents my aims.
 |   |     |                     |                   |but not including, |                   |                        |
 |   |     |                     |                   |"Implementations") |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L7 |3/7  | * A linked list with|                   |                   |                   |[Lab 7]                 |
+|L7 |3/7  | * A linked list with|                   |                   |\$lab_examples07\$ |[Lab 7]                 |
 |   |     |iterators            |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
