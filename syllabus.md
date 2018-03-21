@@ -217,7 +217,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L8 |3/21 | * Implementing a    |                   |                   |                   |                        |
+|L8 |3/21 | * Implementing a    |                   |                   |                   |[Lab 8]                 |
 |   |     |stack                |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -386,3 +386,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Reading questions]: 12/Reading.pdf
 [Assignment 4]: hw04/ZipIterator.pdf
 [Lab 7]: lab07/Lab7.pdf
+[Lab 8]: lab08/Lab8.pdf
