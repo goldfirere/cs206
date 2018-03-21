@@ -17,6 +17,7 @@ FOR NEXT TIME:
 
 - Less on OO. Maybe no inheritance, just interfaces. No hard casts.
 
+- Perhaps add priority queues. Their absence seems like an oversight.
 
 ------------
 DIFFICULTY

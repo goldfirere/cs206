@@ -224,10 +224,11 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|15 |3/22 | * Analyzing stack   | * [Assignment 4]  | * Read KW 4.3-4.4,|                   |                        |
-|   |     |implementations      |due                |pp. 206-220        |                   |                        |
-|   |     | * Queues            | * Assignment 5 out| * (optional) Read |                   |                        |
-|   |     |                     |                   |KW 4.5, p. 221-237 |                   |                        |
+|15 |3/22 | * Analyzing stack   | * [Assignment 4]  | * Read KW 4.3-4.4,|                   | * [Worksheet][isq]     |
+|   |     |implementations      |due                |pp. 206-220        |                   | * [Customer.java]      |
+|   |     | * Queues            | * [Assignment 5]  | * (optional) Read |                   | * [Words.java]         |
+|   |     |                     |out                |KW 4.5, p. 221-237 |                   | * [words.txt]          |
+|   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -246,8 +247,8 @@ represents my aims.
 |   |     |queue                |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|17 |3/29 | * Recursion         |* Assignment 5 due |                   |                   |                        |
-|   |     | * Exam review       |                   |                   |                   |                        |
+|17 |3/29 | * Recursion         |* [Assignment 5]   |                   |                   |                        |
+|   |     | * Exam review       |due                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -387,3 +388,8 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Assignment 4]: hw04/ZipIterator.pdf
 [Lab 7]: lab07/Lab7.pdf
 [Lab 8]: lab08/Lab8.pdf
+[Customer.java]: hw05/Customer.java
+[Words.java]: hw05/Words.java
+[words.txt]: hw05/words.txt
+[Assignment 5]: hw05/QMart.pdf
+[isq]: 15/IteratorsStacksQueues.pdf

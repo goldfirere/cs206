@@ -1,0 +1,15 @@
+I. Queues
+II. Worksheet
+III. Stack Performance
+IV. QMart
+
+Queues (9:55-10:15)
+ FIFO
+ Need to be implemented in a linked list
+ java.util.Queue
+
+Worksheet (10:15-10:35)
+
+Stack Performance (10:35-10:50)
+
+QMart
