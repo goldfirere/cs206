@@ -64,6 +64,10 @@ public final class Util
 		{
 			return expected == null;
 		}
+		else if(expected == null)
+		{
+			return false;
+		}
 		
 		if(expected instanceof String)
 		{
