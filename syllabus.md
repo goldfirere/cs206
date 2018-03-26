@@ -217,14 +217,14 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L8 |3/21 | * Implementing a    |                   |                   |                   |[Lab 8]                 |
+|L8 |3/21 | * Implementing a    |                   |                   |\$lab_examples08\$ |[Lab 8]                 |
 |   |     |stack                |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|15 |3/22 | * Analyzing stack   | * [Assignment 4]  | * Read KW 4.3-4.4,|                   | * [Worksheet][isq]     |
+|15 |3/22 | * Analyzing stack   | * [Assignment 4]  | * Read KW 4.3-4.4,|\$examples15\$     | * [Worksheet][isq]     |
 |   |     |implementations      |due                |pp. 206-220        |                   | * [Customer.java]      |
 |   |     | * Queues            | * [Assignment 5]  | * (optional) Read |                   | * [Words.java]         |
 |   |     |                     |out                |KW 4.5, p. 221-237 |                   | * [words.txt]          |
