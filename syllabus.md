@@ -242,12 +242,12 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L9 |3/28 | * Measuring the     |                   |                   |                   |                        |
-|   |     |running time of a    |                   |                   |                   |                        |
+|L9 |3/28 | * Measuring the     |                   |                   |                   |[Lab 9] (practice       |
+|   |     |running time of a    |                   |                   |                   |problems)               |
 |   |     |queue                |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|17 |3/29 | * Recursion         |* [Assignment 5]   |                   |                   |                        |
+|17 |3/29 | * Recursion         |* [Assignment 5]   |                   |                   |[More practice problems]|
 |   |     | * Exam review       |due                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -393,3 +393,5 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [words.txt]: hw05/words.txt
 [Assignment 5]: hw05/QMart.pdf
 [isq]: 15/IteratorsStacksQueues.pdf
+[Lab 9]: lab09/Lab9.pdf
+[More practice problems]: 17/Exam2Review.pdf
