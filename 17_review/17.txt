@@ -1,0 +1,15 @@
+I. Recursion
+II. Review
+
+Recursion (9:55-10:25)
+ - general idea
+    - base case
+    - recursive case
+ - factorial
+ - exponential
+ - strings
+ - induction, but we won't go there
+ - NO activation frames
+ - efficiency
+
+Practice problems
