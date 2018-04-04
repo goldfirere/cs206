@@ -261,7 +261,7 @@ represents my aims.
 |   |     |                     |                   | * Read KW 8.1, pp.|                   |                        |
 |   |     |                     |                   |419-424            |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L10|4/4  | * Recursion         |                   |                   |                   |                        |
+|L10|4/4  | * Recursion         |                   |                   | \$lab_examples10\$| [Lab 10]               |
 |   |     |exercises            |                   |                   |                   |                        |
 |   |     | * Recursive linked  |                   |                   |                   |                        |
 |   |     |list operations      |                   |                   |                   |                        |
@@ -395,3 +395,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [isq]: 15/IteratorsStacksQueues.pdf
 [Lab 9]: lab09/Lab9.pdf
 [More practice problems]: 17/Exam2Review.pdf
+[Lab 10]: lab10/Lab10.pdf
