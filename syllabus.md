@@ -269,8 +269,8 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|19 |4/5  | * Binary search     |* Assignment 6 out | * Read KW 6.1-6.4,|                   |                        |
-|   |     | * `Comparable`      |                   |pp. 295-332        |                   |                        |
+|19 |4/5  | * Binary search     |* [Assignment 6]   | * Read KW 6.1-6.4,|                   |                        |
+|   |     | * `Comparable`      |out                |pp. 295-332        |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -296,9 +296,9 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|21 |4/12 | * Sets              |* Assignment 6 due | * Read KW 7.3-7.4,|                   |                        |
-|   |     | * Maps              |* Assignment 7 out |pp. 372-395        |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
+|21 |4/12 | * Sets              | * [Assignment 6]  | * Read KW 7.3-7.4,|                   |                        |
+|   |     | * Maps              |due                |pp. 372-395        |                   |                        |
+|   |     |                     | * Assignment 7 out|                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
@@ -396,3 +396,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Lab 9]: lab09/Lab9.pdf
 [More practice problems]: 17/Exam2Review.pdf
 [Lab 10]: lab10/Lab10.pdf
+[Assignment 6]: hw06/TestCorrections.pdf
