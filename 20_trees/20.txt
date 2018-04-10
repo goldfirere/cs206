@@ -1,0 +1,31 @@
+I. Trees
+
+Trees (9:55-10:15)
+ - root
+ - branch
+ - leaf
+ - interior node
+ - parent
+ - child
+ - siblings
+ - ancestor/descendant
+ - subtree
+ - binary
+ - ternary
+ - unary (that's a linked list!!)
+ - n-ary (rose tree)
+ - full tree (all nodes have 0 or 2 children)
+ - perfect tree (flat bottom row)
+ - complete tree (bottom row filled L-to-R)
+
+ - expression trees
+ - organizational hierarchies
+ - evolutionary trees
+
+ - traversals: preorder, inorder, postorder
+
+Binary search trees (10:15-10:50)
+
+Exercise: write preorder and postorder traversals (10:50-11:00)
+
+Comparable (11:00-11:15)

@@ -277,7 +277,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|20 |4/10 | * Trees             |                   | * Glance at KW    |                   |                        |
+|20 |4/10 | * Trees             |                   | * Glance at KW    |\$examples20\$     |                        |
 |   |     | * Binary search     |                   |6.5, pp. 332-344.  |                   |                        |
 |   |     |trees                |                   |We will not be     |                   |                        |
 |   |     |                     |                   |covering heaps or  |                   |                        |
