@@ -290,9 +290,9 @@ represents my aims.
 |   |     |                     |                   | * Read KW 7.1-7.2,|                   |                        |
 |   |     |                     |                   |pp. 361-372        |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L11|4/11 |* Binary search trees|                   |                   |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
+|L11|4/11 | * Binary search     |                   |                   | *                 |[Lab 11]                |
+|   |     | * Binary search     |                   |                   |[BSTIterator.java] |                        |
+|   |     |trees                |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
@@ -397,3 +397,5 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [More practice problems]: 17/Exam2Review.pdf
 [Lab 10]: lab10/Lab10.pdf
 [Assignment 6]: hw06/TestCorrections.pdf
+[Lab 11]: lab11/Lab11.pdf
+[BSTIterator.java]: lab11/BSTIterator.java
