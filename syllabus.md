@@ -296,10 +296,10 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|21 |4/12 | * Sets              | * [Assignment 6]  | * Read KW 7.3-7.4,|                   |                        |
-|   |     | * Maps              |due                |pp. 372-395        |                   |                        |
-|   |     |                     | * Assignment 7 out|                   |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
+|21 |4/12 | * Sets              | * [Assignment 6]  | * Read KW 7.3-7.4,| \$examples21\$    | * [ReadFile.java]      |
+|   |     | * Maps              |due                |pp. 372-395        |                   | * [alice30.txt]        |
+|   |     |                     | * [Assignment 7]  |                   |                   |                        |
+|   |     |                     |out                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
 |22 |4/17 | * Hash tables       |                   | * Skim KW 7.5-7.7,|                   |                        |
@@ -312,9 +312,9 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|23 |4/19 | * Quadratic sorts:  |* Assignment 7 due | * Read KW 8.6-8.7,|                   |                        |
-|   |     |       - Selection   |* Assignment 8 out |pp. 437-446        |                   |                        |
-|   |     |sort                 |                   | * Read KW         |                   |                        |
+|23 |4/19 | * Quadratic sorts:  |* [Assignment 7]   | * Read KW 8.6-8.7,|                   |                        |
+|   |     |       - Selection   |due * Assignment 8 |pp. 437-446        |                   |                        |
+|   |     |sort                 |out                | * Read KW         |                   |                        |
 |   |     |       - Bubble sort |                   |8.9-8.10, pp.      |                   |                        |
 |   |     |       - Insertion   |                   |451-462            |                   |                        |
 |   |     |sort                 |                   |                   |                   |                        |
@@ -399,3 +399,6 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Assignment 6]: hw06/TestCorrections.pdf
 [Lab 11]: lab11/Lab11.pdf
 [BSTIterator.java]: lab11/BSTIterator.java
+[alice30.txt]: hw07/alice30.txt
+[ReadFile.java]: hw07/ReadFile.java
+[Assignment 7]: hw07/Maps.pdf
