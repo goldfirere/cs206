@@ -1,0 +1,27 @@
+I. Abstract types
+II. Hashtables
+III. hashCode
+IV. BMCHashMap
+
+Abstract types (9:55-10:10)
+
+Hashtables (10:10-10:30)
+ - infinitely long array
+ - not-so-infinite
+ - hash values
+ - collisions
+	- probing
+	- chaining
+
+hashCode (10:30-10:45)
+ - Object.hashCode
+ - String.hashCode
+ - hashmeister
+ - relationships among equals, compareTo, and hashCode
+
+build your own hashtable
+
+
+BMCHashMap (11:00-11:15)
+
+
