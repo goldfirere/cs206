@@ -307,7 +307,7 @@ represents my aims.
 |   |     |                     |                   | * Read KW 8.2-8.5,|                   |                        |
 |   |     |                     |                   |pp. 425-436        |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L12|4/18 | * Implementing a    |                   |                   |                   |                        |
+|L12|4/18 | * Implementing a    |                   |                   |                   | [Lab 12]               |
 |   |     |hash table           |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -402,3 +402,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [alice30.txt]: hw07/alice30.txt
 [ReadFile.java]: hw07/ReadFile.java
 [Assignment 7]: hw07/Maps.pdf
+[Lab 12]: lab12/Lab12.pdf

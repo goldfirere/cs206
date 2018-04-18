@@ -2,7 +2,6 @@
  * File: BMCHashSet.java
  * Desc: A hashtable implementation of a set
  */
-import java.lang.reflect.*;
 import java.util.*;
 
 public class BMCHashSet<E> implements BMCSet<E>, Iterable<E>
