@@ -19,8 +19,6 @@ public interface BMCMap<K,V>
 	
 	/** Removes a mapping from the given key.
 	 *  @param key The key whose mapping should be removed.
-	 *  @return The value that was associated with the key, or null
-	 *          if no such value exists.
 	 */
 	void remove(K key);
 	
