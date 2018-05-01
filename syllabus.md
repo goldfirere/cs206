@@ -336,7 +336,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|26 |5/1  |* Exam review        |                   |                   |                   |                        |
+|26 |5/1  |* Exam review        |                   |                   |                   |[Final exam review 1]   |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -405,3 +405,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Lab 12]: lab12/Lab12.pdf
 [Assignment 8]: hw08/LabReport.pdf
 [Sorting visualization]: https://visualgo.net/en/sorting
+[Final exam review 1]: 26/Review.pdf

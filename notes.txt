@@ -19,6 +19,15 @@ FOR NEXT TIME:
 
 - Perhaps add priority queues. Their absence seems like an oversight.
 
+- Compare Assignment 4 to previous assignments. Many students liked
+  phrasing of Assignment 4 more. By a lot.
+
+- Add time estimates to other assignments, too.
+
+- Remove exceptions from Assignment 2 (and subsequent ones)
+
+- Figure out what to do about JUnit. Either use it more or not at all. (Use it more!)
+
 ------------
 DIFFICULTY
 
