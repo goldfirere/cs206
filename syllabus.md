@@ -341,8 +341,8 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L14|5/2  |* Exam review        |                   |                   |                   |                        |
-|   |     |                     |                   |                   |                   |                        |
+|L14|5/2  |* Exam review        |                   |                   |                   | * [Old final part 1]   |
+|   |     |                     |                   |                   |                   | * [Old final part 2]   |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -406,3 +406,5 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Assignment 8]: hw08/LabReport.pdf
 [Sorting visualization]: https://visualgo.net/en/sorting
 [Final exam review 1]: 26/Review.pdf
+[Old final part 1]: lab14/OldFinalPart1.pdf
+[Old final part 2]: lab14/OldFinalPart2.pdf
