@@ -28,6 +28,27 @@ FOR NEXT TIME:
 
 - Figure out what to do about JUnit. Either use it more or not at all. (Use it more!)
 
+- Clarify Big-O in #5 of assignment 8
+
+---
+
+- Lab sessions felt like more description would be helpful
+
+- Labs sometimes felt split between lab and assignment
+
+- Go over solutions in class
+
+- posting lab solutions was helpful (perhaps a week later)
+
+- problems before class to go over in class
+
+- partners in lab are good (dealing the cards)
+
+- perhaps (different opinions!) ask who wants cards
+
+- JUnit was too much or too little.
+  Why use JUnit instead of debugger?
+
 ------------
 DIFFICULTY
 

@@ -307,7 +307,7 @@ represents my aims.
 |   |     |                     |                   | * Read KW 8.2-8.5,|                   |                        |
 |   |     |                     |                   |pp. 425-436        |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|L12|4/18 | * Implementing a    |                   |                   |                   | [Lab 12]               |
+|L12|4/18 | * Implementing a    |                   |                   |\$lab_examples12\$ | [Lab 12]               |
 |   |     |hash table           |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -347,7 +347,7 @@ represents my aims.
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 +---+-----+---------------------+-------------------+-------------------+-------------------+------------------------+
-|27 |5/3  |* Exam review        |* [Assignment 8]   |                   |                   |                        |
+|27 |5/3  |* Exam review        |* [Assignment 8]   |                   |                   | [Final exam reference] |
 |   |     |                     |due                |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
 |   |     |                     |                   |                   |                   |                        |
@@ -408,3 +408,4 @@ There will be a *cumulative* self-scheduled final exam during the normal exams p
 [Final exam review 1]: 26/Review.pdf
 [Old final part 1]: lab14/OldFinalPart1.pdf
 [Old final part 2]: lab14/OldFinalPart2.pdf
+[Final exam reference]: 27/Exam3Reference.pdf
