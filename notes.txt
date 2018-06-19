@@ -30,6 +30,16 @@ FOR NEXT TIME:
 
 - Clarify Big-O in #5 of assignment 8
 
+- Clarify requirements in assignment 5 (see rubric)
+
+- Clarify that students can take code from elsewhere in #8
+
+- Check BMCHashSet implementation: the put method might duplicate entries if
+  the key is already there
+
+- Also, the BMCHSIterator throws NullPointerException if next() is called on an
+  empty HashSet
+
 ---
 
 - Lab sessions felt like more description would be helpful
