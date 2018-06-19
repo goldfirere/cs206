@@ -101,9 +101,6 @@ wrapperContext =
   defaultContext <>
   field "basename" (return . takeBaseName . toFilePath . itemIdentifier)
 
-pandocCompileThis :: Item String -> Compiler (Item String)
-pandocCompileThis = (return . writePandoc) <=< readPandoc
-
 -- do all the processing I expect on an md file
 mdCompiler :: Compiler (Item String)
 mdCompiler
